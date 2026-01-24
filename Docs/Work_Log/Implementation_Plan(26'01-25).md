@@ -4,6 +4,7 @@
 
 ### 概要
 プロジェクトのソースコードをGitHubのリモートリポジトリにプッシュし、バックアップとバージョン管理を確立します。
+**GitHub CLI (`gh`) を導入し、ターミナルのみで完結するフローを採用します。**
 
 ### 実行対象
 - **ターゲット:** プロジェクトルート (`D:\KafkA\Documents\project_last-stand`)
@@ -11,35 +12,37 @@
 
 ### 実行手順 (User Actions)
 
-#### 1. GitHubリポジトリの作成 (Manual)
-ブラウザでGitHubにアクセスし、新規リポジトリを作成してください。
-
-*   **Repository Name:** `project_last-stand` (推奨) または `Operation_Last-Stand`
-*   **Public/Private:** 任意（就職活動用ならPublic推奨ですが、開発中はPrivateでも可）
-*   **Initialize with:** **None** (何もチェックしない。空のリポジトリを作成する)
-
-#### 2. リモートの追加とプッシュ (Terminal)
-作成したリポジトリのURL（例: `https://github.com/YourName/project_last-stand.git`）を使用します。
+#### 1. GitHub CLI のインストール
+ターミナルからリポジトリを作成・操作するために、公式CLIツールをインストールします。
 
 **実行コマンド:**
 ```powershell
-# 1. 全ファイルをステージング
-git add .
+winget install --id GitHub.cli
+```
+※インストール後、**ターミナルの再起動**が必要です。
 
-# 2. コミット (Next.js初期化時のコミットがある場合はスキップされることがあります)
-git commit -m "feat: Initialize project with Next.js and R3F scene"
+#### 2. GitHub Login
+再起動後のターミナルでログイン認証を行います。
 
-# 3. ブランチ名を main に変更 (最近の標準)
-git branch -M main
+**実行コマンド:**
+```powershell
+gh auth login
+```
+*   `GitHub.com` → `HTTPS` → `Yes` → `Login with a web browser` の順に選択し、表示されるコードをブラウザに入力して承認してください。
 
-# 4. リモートを追加 (URLはご自身のリポジトリのものに書き換えてください)
-git remote add origin <YOUR_REPO_URL>
+#### 3. リポジトリ作成とプッシュ (Automated)
+認証完了後、以下のコマンドで「リポジトリ作成」「リモート登録」「プッシュ」を一括で行います。
 
-# 5. 初回プッシュ
-git push -u origin main
+**実行コマンド:**
+```powershell
+# Publicリポジトリの場合
+gh repo create project_last-stand --public --source=. --push
+
+# Privateリポジトリの場合
+gh repo create project_last-stand --private --source=. --push
 ```
 
-#### 3. 除外設定の確認 (.gitignore)
+#### 4. 除外設定の確認 (.gitignore)
 `.env` や `node_modules`、`.agent` ディレクトリがアップロードされないことを確認します。
 
 *   **Status:** [ ] Not Started
