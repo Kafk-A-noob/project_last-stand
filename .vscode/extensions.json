@@ -2,8 +2,11 @@
     "recommendations":  [
                             "aaron-bond.better-comments",
                             "alefragnani.project-manager",
+                            "bradlc.vscode-tailwindcss",
                             "charliermarsh.ruff",
                             "davidanson.vscode-markdownlint",
+                            "dbaeumer.vscode-eslint",
+                            "dsznajder.es7-react-js-snippets",
                             "eamodio.gitlens",
                             "esbenp.prettier-vscode",
                             "gera2ld.markmap-vscode",
