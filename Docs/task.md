@@ -2,6 +2,7 @@
 
 ## Phase 1: 基礎と開眼 (Basic Training & Awakening) [2026年1月末まで]
 
+- [x] 実行計画に対するユーザーの承認を得る
 - [x] **環境構築 (Environment Setup)** <!-- id: 0 -->
   - [x] `npx create-next-app` (TypeScript, Tailwind, App Router) <!-- id: 1 -->
   - [x] 依存関係のインストール (`three`, `@types/three`, `@react-three/fiber`, `@react-three/drei`) <!-- id: 2 -->
@@ -22,6 +23,14 @@
   - [x] GitHub CLI (gh) のインストール <!-- id: 36 -->
   - [x] `gh auth login` (認証) <!-- id: 37 -->
   - [x] `gh repo create` (作成とプッシュ) <!-- id: 38 -->
+
+## Phase 1.8: 座学・設計戦略 (Strategy & Architecture Study) [2026年1月26日]
+
+- [x] **Unity to R3F 概念翻訳 (Concept Translation)** <!-- id: 39 -->
+  - [x] `Resources.Load` vs `useGLTF` <!-- id: 40 -->
+  - [x] Prefab vs Component <!-- id: 41 -->
+- [x] **アーキテクチャ設計 (ModelViewer Draft)** <!-- id: 42 -->
+  - [x] `ModelViewer.tsx` のインターフェース設計 <!-- id: 43 -->
 
 ## Phase 2: Unity知識の移植 (Unity Knowledge Transfer) [2026年2月]
 
