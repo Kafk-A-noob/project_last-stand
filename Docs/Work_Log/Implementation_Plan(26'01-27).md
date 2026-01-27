@@ -1,32 +1,53 @@
-# 実装計画: Phase 1.9 Blender to Web 理論
+# 実装計画書 (2026-01-27)
 
-## Goal Description
+## Phase 2: Blender to Web パイプライン (First Asset)
 
-VRChat (Standard Shader) ユーザーが Web (glTF/PBR) 環境へ移行する際に最大の障壁となる「テクスチャパッキング (ORM Map)」の概念を、図解・対比を用いて解説し、帰宅後の作業効率を最大化する。
+### 概要
 
-## User Review Required
->
-> [!NOTE]
-> コードの実装はなく、ドキュメント (`Docs/Implementation_Intent/`) の作成のみを行う。
+本計画書は、Phase 2「Unity知識の移植」の第一歩として、Blenderで作成した3DモデルをWeb標準規格である **glTF (glb)** 形式でエクスポートし、R3F環境で表示するまでの手順を定義します。
 
-## Proposed Changes
+### 実行対象
 
-### 1. 理論解説資料の作成
+- **ターゲット:**
+  - Blender (外部ツール)
+  - `D:\KafkA\Documents\project_last-stand\public\models` (新規ディレクトリ)
+  - `app/components/ModelViewer.tsx` (新規コンポーネント)
+- **目的:** BlenderからWebへの「アセット搬入ルート」の開通
 
-#### [NEW] Docs/Implementation_Intent/04_Phase1.9_glTF_ORM_Theory.md
+### 1. ディレクトリ準備 (System)
 
-- **Standard Shader vs glTF Standard**
-  - Metallic/Smoothness の扱い比較
-  - マップ枚数の削減戦略 (通信量削減)
-- **ORM Map 解説**
-  - Red Channel: Ambient Occlusion (影の焼き込み)
-  - Green Channel: Roughness (ざらつき = 1.0 - Smoothness)
-  - Blue Channel: Metalness (金属度)
-- **Blender Node Setup (Preview)**
-  - Blenderでどう繋ぐかのスクリーンショット（あるいはテキスト図解）
+- [x] `public/models` ディレクトリを作成
+
+### 2. Blender作業 (Manual Execution)
+
+詳細は `Docs/Manual/Blender_R3F_Setup.md` を参照のこと。
+
+- [ ] **モデル作成:** Reactロゴ (Atom形状)
+  - X軸で立たせたリングを、互いに60度ずつZ軸回転させて配置。
+- [ ] **マテリアル設定:**
+  - Principled BSDFを使用
+  - Base Color: #61DAFB (React Blue)
+  - Emission: 同色でStrengthを調整
+- [ ] **最適化 (Optimization):**
+  - Scaleの適用 (`Ctrl+A` -> Scale)
+  - 全てを1つのオブジェクトに結合 (`Ctrl+J`)
+  - 原点 (Origin) を重心 `(0,0,0)` に設定
+- [ ] **エクスポート:**
+  - Format: `.glb`
+  - Path: `public/models/react_logo.glb`
+
+### 3. R3F 実装 (Coding)
+
+- [ ] **`app/components/ReactLogo.tsx` の作成**
+  - `useGLTF` フックを使用したモデルロード
+  - **Billboard実装:** `<Billboard follow={true}>` でラップし、常にカメラに向くようにする。
+  - **アニメーション:** `useFrame` を使用し、内部MeshをZ軸（視線軸）で回転させる。
+- [ ] **`app/components/Scene.tsx` の更新**
+  - 現在のCubeを削除し、`<ReactLogo />` コンポーネントに差し替え
 
 ## Verification Plan
 
-### Manual Verification
-
-- ユーザーに作成したドキュメントを読んでもらい、「VRChat用アバターのテクスチャをどう変換すればよいか」即答できる状態か確認する。
+- **ブラウザ確認:**
+  - 赤いCubeが消え、Blenderで作ったReactロゴが表示されていること。
+  - カメラを動かしてもロゴが常にこちらを向いていること (Billboard)。
+  - ロゴが回転（ロール）していること。
