@@ -32,6 +32,19 @@
 - [x] **アーキテクチャ設計 (ModelViewer Draft)** <!-- id: 42 -->
   - [x] `ModelViewer.tsx` のインターフェース設計 <!-- id: 43 -->
 
+## Phase 1.9: Blender to Web 理論 (Blender Theory) [2026年1月27日]
+
+- [x] **Standard Shader -> PBR (glTF) 変換理論** <!-- id: 44 -->
+  - [x] VRChat(Metallic/Smoothness) との違い <!-- id: 45 -->
+  - [x] ORM Map (R:Occlusion, G:Roughness, B:Metalness) の理解 <!-- id: 46 -->
+
+## Phase 3.0: コンセプト・設計戦略 (Concept Strategy) [2026年1月27日]
+
+- [x] **ポートフォリオ企画書 (Design Doc) 作成** <!-- id: 47 -->
+  - [x] テーマ決定: Virtual Showroom (Digital Fashion) <!-- id: 48 -->
+  - [x] ターゲット層とアピールポイントの整理 <!-- id: 49 -->
+  - [x] サイト構成 (Wireframe) の定義 <!-- id: 50 -->
+
 ## Phase 2: Unity知識の移植 (Unity Knowledge Transfer) [2026年2月]
 
 - [ ] **Blender to Web パイプライン** <!-- id: 13 -->

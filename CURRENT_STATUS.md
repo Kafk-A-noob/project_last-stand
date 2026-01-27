@@ -1,30 +1,28 @@
 # 現在の状況 (Current Status)
 
-最終更新日: 2026-01-26
+最終更新日: 2026-01-27
 
-## Phase 1.8: Strategy & Architecture Study (Completed)
+## Phase 3.0: Concept Strategy (Completed)
 
 ### ステータス
 
 **完了済みのタスク:**
-- 環境構築 (Phase 1)
-- 動作検証 (Phase 1)
-- React Hooks 訓練 (Phase 1.5)
-- **座学・設計戦略** (Phase 1.8)
-  - Unity to R3F 概念翻訳 (Lecture) 完了
-  - ModelViewer アーキテクチャ設計 (Draft) 完了
-  - **成果:** 帰宅後の実装をスムーズにするための「脳内同期」と設計図作成
+- Phase 1 〜 1.9 (基礎、Hooks、設計座学、Blender理論) 全て完了
+- **コンセプト・設計戦略** (Phase 3.0)
+    - テーマ決定 (Virtual Showroom) 完了
+    - 戦略転換: **Technical Optimizer 戦略** へピボット完了 (Artist戦略を破棄)
 
-- **現在進行中のタスク:** Phase 2待機 (帰宅待ち)
-- **次のアクション:** **Phase 2: Unity知識の移植**
-  - 帰宅後、`ModelViewer.tsx` の実装から開始
+- **現在進行中のタスク:**
+    - Phase 2 待機 (帰宅待ち)
+
+- **次のアクション:**
+  - **Phase 2: Unity知識の移植** (帰宅後開始)
+  - 作成した企画書に基づき、Blenderでの素材作成 (ORMマップ焼き込み) を実践する
 
 ### ログ
 
-- **2026-01-25 (Hooks):** `Counter.tsx` と `Scene.tsx` の連携実装完了。Vanilla JS比喩を用いた「Stateのリフティング」を実践し、親コンポーネント経由でのデータフローを確立。
-- **2026-01-25 (Done):** Phase 1.5 完了。
-- **2026-01-26 (Study):** 職業訓練校（拘束環境）より Phase 1.8 を遂行。`Resources.Load` vs `useGLTF` の概念対比資料と、`ModelViewer` の設計ドラフトを作成。
+- **2026-01-27 (Study):** Phase 1.9 にて ORM Map 理論を学習。
+- **2026-01-27 (Plan):** Phase 3.0 を前倒し。当初の「美的感覚アピール」路線をユーザーの自己分析に基づき却下。代わりに「最適化・パイプライン理解・自走力」を売りにする **Technical Optimizer 戦略** を策定し、Concept Doc を確定させた。
 
 ### 発生中の問題
-
 - なし
