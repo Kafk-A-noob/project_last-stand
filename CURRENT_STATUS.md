@@ -1,50 +1,55 @@
 # 現在の状況 (Current Status)
 
-最終更新日: 2026-01-28
+最終更新日: 2026-01-28 24:00
+ステータス: Phase 3 Launch Complated
 
 ## 次回作業への引き継ぎ (Handoff Note)
 
-**学校や別環境で作業再開する場合のチェックリスト:**
+**ステータス:**
 
-1. **Sync:** `git pull` で最新コードを取得。
-2. **Deps:** 初回のみ `npm install` を実行 (node_modulesがない場合)。
-3. **Check:** `npm run dev` を実行し、ブラウザで以下の機能を確認。
-    - React Logoが黒背景で回転している。
-    - **「PROJECT: LAST STAND」** のUIがオーバーレイ表示されている (レスポンシブ崩れなし)。
-    - **CYAN / PINK ボタン** を押すと、ロゴの色が変わる。
-    - 右クリックでの平行移動 (Pan) が禁止されている。
-4. **Next:** `task.md` の Phase 3 「パフォーマンス・最適化」からスタート。
-    - `Docs/Study/Phase3_07_Optimization_Theory.md` を読み、概念を理解する。
+- **Overlay UI:** 実装完了。
+- **3D Scene:** `ViewerLayout` に統合完了。
+- **Errors:** Hydration Error, Props Error 共に解消済み。Clean State。
+
+**再開時のアクション:**
+
+1. **Sync:** `git pull` (もし別の場所で作業していたら)
+2. **Dev:** `npm run dev`
+3. **Verify:**
+    - 黒背景に「PROJECT: LAST STAND」のUIが表示される。
+    - 中央で React Logo (Atom) が回転している。
+    - 画面上の `// TERMINAL_ACCESS...` が正しく表示されている。
+4. **Next Task:** `task.md` の Phase 3 **"3Dアセット制作"** から開始。
+    - Blenderを開き、ポートフォリオ用の本番モデルを作成する。
+
+---
+
+## 学習リソース (Study Documentation)
+
+知識補強や復習は、以下の `Docs/Study` 内の資料を参照してください。全ての技術情報はここに集約されました。
+
+- **📂 Docs/Study/Phase1/**
+  - `01_Phase1.8_Unity_to_R3F.md`: UnityエンジニアのためのR3F翻訳ガイド
+  - `01_Phase1.9_glTF_ORM_Theory.md`: Blender to WebのためのPBR/ORM理論
+  - `01_Phase1.5_ReactHooks.md`: Reactステート管理の基礎
+
+- **📂 Docs/Study/Phase3/** (New!)
+  - `01_Overlay_UI_Architecture.md`: 3DとUIの重ね合わせ、`pointer-events` のすべて
+  - `02_Data_Flow_and_Integration.md`: 親子コンポーネント間のデータ連携
+  - `03_Web3D_Optimization_and_Controls.md`: gltfpack最適化とカメラ制御
 
 ---
 
 ## Phase 3: Web3D ポートフォリオ構築 (進行中)
 
-### ステータス
+### 完了した作業 (Done)
 
-**完了済みのタスク:**
+- [x] **ViewerLayoutの実装:** `pointer-events-none` を駆使したモダンなOverlay UI構築。
+- [x] **Strict Training Mode:** スニペット写経による「理解しながらの実装」フロー確立。
+- [x] **Documentation:** 散乱していたドキュメントを `Phase` ごとに整理・統合。
 
-- **Overlay UI Architecture:**
-  - `ViewerLayout` 実装完了。`pointer-events` による3D/2Dの入力制御を確立。
-  - ヘッダー・フッターを含む「Digital Laboratory」テーマの外枠を構築。
-  - `page.tsx` をリファクタリングし、古い実験コードを一掃。
-- **Interactive State Pipeline:**
-  - `useState` (Page) -> Props (Scene) -> Props (Logo) -> `useEffect` (Material) のバケツリレーを実装。
-  - Webのボタン操作で3Dモデルのマテリアルを動的に変更することに成功。
-- **Responsive Design (Mobile First):**
-  - Tailwind CSS (`md:` prefix) を使用し、スマホとPCでレイアウトを切り替え。
-  - スマホ: 縦並び・狭い余白 / PC: 横並び・広い余白。
-- **Controls Tuning:**
-  - `OrbitControls` の `enablePan={false}` により、ショールームライクな操作感を実現。
+### 次のステップ (Todo)
 
-- **現在進行中のタスク:** 最適化 (Optimization) フェーズへの移行。
-
----
-
-## Phase 2: Blender to Web パイプライン (完了)
-
-### ログ
-
-- **2026-01-28:** Phase 3 今日の成果。OverlayUI構築、インタラクティブ化、レスポンシブ対応まで完遂。
-- **2026-01-28:** Phase 2完了。Blenderパイプラインとトラブルシューティング(Context Lost, Draco)を完遂。
-- **2026-01-24:** プロジェクト開始。初期環境構築とCube表示まで完了。
+- [ ] **3D Asset Creation:** Blenderでの「見せるモデル」の作成。
+- [ ] **Navigation:** 複数モデルを切り替えるUIの実装。
+- [ ] **Optimization:** Lighthouseスコア計測と改善。
