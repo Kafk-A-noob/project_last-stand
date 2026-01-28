@@ -25,8 +25,9 @@
 **完了済みのタスク:**
 
 - **Overlay UI Architecture:**
-  - Unity uGUIのような「手前の操作レイヤー」を `OverlayUI.tsx` で実装完了。
-  - `pointer-events-none` によるクリック透過と、パーツごとの `auto` 制御を習得。
+  - `ViewerLayout` 実装完了。`pointer-events` による3D/2Dの入力制御を確立。
+  - ヘッダー・フッターを含む「Digital Laboratory」テーマの外枠を構築。
+  - `page.tsx` をリファクタリングし、古い実験コードを一掃。
 - **Interactive State Pipeline:**
   - `useState` (Page) -> Props (Scene) -> Props (Logo) -> `useEffect` (Material) のバケツリレーを実装。
   - Webのボタン操作で3Dモデルのマテリアルを動的に変更することに成功。

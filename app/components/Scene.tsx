@@ -4,11 +4,9 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import ReactLogo from './ReactLogo'
 
-type SceneProps = {
-  color: string;
-};
 
-export default function Scene({ color }: SceneProps) {
+
+export default function Scene() {
   return (
     <Canvas>
       {/* Unity: Directional Light */}
@@ -17,7 +15,7 @@ export default function Scene({ color }: SceneProps) {
       
       {/* 以前のCubeは.mdで除外 */}
       {/* Reactロゴ設置 */}
-      <ReactLogo color={color} />
+      <ReactLogo />
 
       {/* カメラ操作 */}
 
