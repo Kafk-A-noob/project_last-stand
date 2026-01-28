@@ -4,7 +4,11 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import ReactLogo from './ReactLogo'
 
-export default function Scene() {
+type SceneProps = {
+  color: string;
+};
+
+export default function Scene({ color }: SceneProps) {
   return (
     <Canvas>
       {/* Unity: Directional Light */}
@@ -13,10 +17,16 @@ export default function Scene() {
       
       {/* 以前のCubeは.mdで除外 */}
       {/* Reactロゴ設置 */}
-      <ReactLogo />
+      <ReactLogo color={color} />
 
       {/* カメラ操作 */}
-      <OrbitControls makeDefault />
+
+      {/* 
+      enablePan={false}: 平行移動（右ドラッグ）を禁止。
+      これで「モデルが画面外に行ってしまう」事故を防ぎ、
+      常にモデルを中心に回転するように強制。
+      */}
+      <OrbitControls makeDefault enablePan={false} />
     </Canvas>
   )
 }
