@@ -40,16 +40,5 @@
 
 ---
 
-## Phase 3: Web3D ポートフォリオ構築 (進行中)
-
-### 完了した作業 (Done)
-
-- [x] **ViewerLayoutの実装:** `pointer-events-none` を駆使したモダンなOverlay UI構築。
-- [x] **Strict Training Mode:** スニペット写経による「理解しながらの実装」フロー確立。
-- [x] **Documentation:** 散乱していたドキュメントを `Phase` ごとに整理・統合。
-
-### 次のステップ (Todo)
-
-- [ ] **3D Asset Creation:** Blenderでの「見せるモデル」の作成。
 - [ ] **Navigation:** 複数モデルを切り替えるUIの実装。
 - [ ] **Optimization:** Lighthouseスコア計測と改善。

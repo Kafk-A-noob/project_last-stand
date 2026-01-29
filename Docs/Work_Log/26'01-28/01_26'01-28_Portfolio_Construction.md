@@ -1,4 +1,4 @@
-# 実装計画書 (2026-01-29)
+# 実装計画書 (2026-01-28)
 
 ## Phase 3: ポートフォリオ本制作 (Portfolio Construction) - START
 

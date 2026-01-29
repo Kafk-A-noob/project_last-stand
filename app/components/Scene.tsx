@@ -1,8 +1,11 @@
 'use client'
 
+import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import ReactLogo from './ReactLogo'
+// import ReactLogo from './ReactLogo'
+import ManualLoader from './ManualLoader'
+import SmartLoader from './SmartLoader'
 
 
 
@@ -10,12 +13,15 @@ export default function Scene() {
   return (
     <Canvas>
       {/* Unity: Directional Light */}
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1.0} />
       <directionalLight position={[5, 10, 5]} intensity={1} />
       
-      {/* 以前のCubeは.mdで除外 */}
-      {/* Reactロゴ設置 */}
-      <ReactLogo />
+      {/* モデル読み込み (Suspense: 非同期処理の基本作法) */}
+      <Suspense fallback={<SmartLoader />}>
+
+      {/* 以前のCube・ReactLogoは.mdで除外 */}
+        <ManualLoader />
+      </Suspense>
 
       {/* カメラ操作 */}
 
