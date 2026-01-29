@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { Group } from "three";
+import { Group, Object3D, Mesh } from "three";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
@@ -36,20 +36,32 @@ export default function ManualLoader() {
       let vertCount = 0;
       let triCount = 0;
 
-      gltf.scene.traverse((obj: any) => {
-        if (obj.isMesh) {
-          vertCount += obj.geometry.attributes.position.count;
-          triCount += obj.geometry.index ? obj.geometry.index.count / 3 : 0;
+      gltf.scene.traverse((obj: Object3D) => {
+        if ((obj as Mesh). isMesh) {
+          const mesh = obj as Mesh;
+          vertCount += mesh.geometry.attributes.position.count;
+          triCount += mesh.geometry.index ? mesh.geometry.index.count / 3 : 0;
         }
       });
 
       // ストアに保存
       setModel({
-        name: meta.name || "Unknown Model",
-        description: meta.description || "No description available.",
-        tech: meta.tech || "Standard glTF",
-        vertices: vertCount,
-        triangles: triCount,
+        // System
+        id: "item-000-prototype",
+        active: true,
+        // Narrative
+        name: meta.name || "React Logo",
+        quote: meta.quote || "The beginning of everything.",
+        description: meta.description || "A rotating atom symbol representing the declarative UI library.",
+        contributor: meta.contributor || "Meta Open Source",
+        // Asset
+        modelPath: "/models/React_Logo.glb",
+        // Tech Specs (The Flex)
+        techSpecs: {
+          vertices: vertCount,
+          triangles: triCount,
+          compression: "Draco",
+        },
       });
     }
   }, [gltf, setModel]);

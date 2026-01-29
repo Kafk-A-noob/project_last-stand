@@ -1,44 +1,59 @@
 # 現在の状況 (Current Status)
 
-最終更新日: 2026-01-28 24:00
-ステータス: Phase 3 Launch Complated
+最終更新日: 2026-01-29 22:00
+ステータス: **Production Ready (Codebase)**
 
 ## 次回作業への引き継ぎ (Handoff Note)
 
 **ステータス:**
 
-- **Overlay UI:** 実装完了。
-- **3D Scene:** `ViewerLayout` に統合完了。
-- **Errors:** Hydration Error, Props Error 共に解消済み。Clean State。
+- **Build:** `npm run build` 通過確認済み (All Green).
+- **Structure:** `src/` 構成 + `ArchiveItem` 型定義により堅牢化完了。
+- **Missing:** モデルを切り替える「Navigator」機能が未実装（現在は `ManualLoader` で固定表示）。
+- **Pending:** `ManualLoader.tsx` への Material Strategy (Plan B) 検出ロジックの実装（次回最優先）。
 
-**再開時のアクション:**
+## ⚠️ 環境移行に関する注意 (Environment Switch)
 
-1. **Sync:** `git pull` (もし別の場所で作業していたら)
-2. **Dev:** `npm run dev`
-3. **Verify:**
-    - 黒背景に「PROJECT: LAST STAND」のUIが表示される。
-    - 中央で React Logo (Atom) が回転している。
-    - 画面上の `// TERMINAL_ACCESS...` が正しく表示されている。
-4. **Next Task:** `task.md` の Phase 3 **"3Dアセット制作"** から開始。
-    - Blenderを開き、ポートフォリオ用の本番モデルを作成する。
+**次回作業場所:** 訓練校端末
+
+1. **Git Sync:** 着席後、直ちに `git pull` を実行すること。
+2. **Asset Logic:**
+    - モデル (`.glb`) はGit管理外のため、自宅PCから Google Drive / USB 等で持ち込む必要がある。
+    - `public/models/` フォルダなどは `git clone` 直後には空の可能性があるため、必要に応じて作成・配置すること。
+
+**次のアクション (Phase 3.5):**
+
+1. **Model:** Blenderで `Radio` (ID-001) を制作する。
+2. **Import:** `public/models/radio.glb` に配置する。
+3. **Logic:** `Scanner` (仮称: Navigator) を実装し、ReactLogoとRadioを切り替えられるようにする。
+
+---
+
+## プロジェクト構成 (Directory Structure)
+
+``` txt
+project_last-stand/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── canvas/   (Scene, ManualLoader)
+│   │   │   ├── ui/       (InfoPanel, SmartLoader)
+│   │   │   └── layout/   (ViewerLayout)
+│   │   └── page.tsx      (ErrorBoundary Implemented)
+│   └── lib/              (store.ts: ArchiveItem Defined)
+├── public/               (Assets: models/* are GITIGNORED)
+└── Docs/                 (Operations & Cargo Manifest)
+```
 
 ---
 
 ## 学習リソース (Study Documentation)
 
-知識補強や復習は、以下の `Docs/Study` 内の資料を参照してください。全ての技術情報はここに集約されました。
+**📂 Docs/Work_Log/26'01-29/**
 
-- **📂 Docs/Study/Phase1/**
-  - `01_Phase1.8_Unity_to_R3F.md`: UnityエンジニアのためのR3F翻訳ガイド
-  - `01_Phase1.9_glTF_ORM_Theory.md`: Blender to WebのためのPBR/ORM理論
-  - `01_Phase1.5_ReactHooks.md`: Reactステート管理の基礎
+- `02_Production_and_Refactoring_Report.md`: 本日の実施全容（必読）
 
-- **📂 Docs/Study/Phase3/** (New!)
-  - `01_Overlay_UI_Architecture.md`: 3DとUIの重ね合わせ、`pointer-events` のすべて
-  - `02_Data_Flow_and_Integration.md`: 親子コンポーネント間のデータ連携
-  - `03_Web3D_Optimization_and_Controls.md`: gltfpack最適化とカメラ制御
+**📂 Docs/Study/Phase3_Advanced/**
 
----
-
-- [ ] **Navigation:** 複数モデルを切り替えるUIの実装。
-- [ ] **Optimization:** Lighthouseスコア計測と改善。
+- `01_System_Architecture.md`: React/UIと3Dの連携、スタイリング、ローディング理論
+- `02_Production_and_Assets.md`: 製品化硬化処理、データ構造、Web3Dアセット理論

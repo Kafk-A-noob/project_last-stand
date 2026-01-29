@@ -1,13 +1,11 @@
-'use client'
+"use client";
 
-import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 // import ReactLogo from './ReactLogo'
-import ManualLoader from './ManualLoader'
-import SmartLoader from './SmartLoader'
-
-
+import ManualLoader from "./ManualLoader";
+import SmartLoader from "../ui/SmartLoader";
 
 export default function Scene() {
   return (
@@ -15,11 +13,10 @@ export default function Scene() {
       {/* Unity: Directional Light */}
       <ambientLight intensity={1.0} />
       <directionalLight position={[5, 10, 5]} intensity={1} />
-      
+
       {/* モデル読み込み (Suspense: 非同期処理の基本作法) */}
       <Suspense fallback={<SmartLoader />}>
-
-      {/* 以前のCube・ReactLogoは.mdで除外 */}
+        {/* 以前のCube・ReactLogoは.mdで除外 */}
         <ManualLoader />
       </Suspense>
 
@@ -32,5 +29,5 @@ export default function Scene() {
       */}
       <OrbitControls makeDefault enablePan={false} />
     </Canvas>
-  )
+  );
 }

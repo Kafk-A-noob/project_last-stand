@@ -34,6 +34,14 @@ GitHubリポジトリのルート（直下）に以下を配置し、常に最�
 * **3D Core:** Three.js / React Three Fiber (R3F) / @react-three/drei
 * **3D Assets:** Blender (glTF Pipeline)
 
+### アセット管理戦略 (Asset Mobility Stratagem)
+
+最終の総容量が不明な為、**「コードはGit、モデルはLocal」** を現状標準とする。
+
+1. **Git管理対象外:** `public/models/` 内の巨大ファイル（.glb, .gltf, .draco）は `.gitignore` で除外する。
+2. **物理輸送:** 3Dモデルファイルは Google Drive または USBメモリを使用し、作業環境間で手動同期する。
+3. **理由:** GitHub Freeプランの帯域制限（1GB/月）を回避し、リポジトリの軽量性を維持するため。
+
 ---
 
 ## 3. Web3Dグラフィックス「鉄の掟」 (Iron Rules)

@@ -22,14 +22,18 @@ export default function SmartLoader() {
         animate-[fadeIn_0.5s_ease-in_forwards]: フェードインアニメ
         delay-500: 500ms待機 
       */}
-      <div className={cn("text-white font-mono",
-      "text-xl bg-black/50 p-4 border border-white/20",
-      "backdrop-blur-md opacity-0 animate-[fadeIn_0.5s_ease-in_forwards]")}
-        style={{animationDelay: "500ms"}}>
-
-
-      <div className={cn("text-xs text-gray-400 mb-1")}>LOADING ASSETS...</div>
-      {toMB(loaded)} MB / {toMB(total)} MB ({progress.toFixed(0)}%)
+      <div
+        className={cn(
+          "text-white font-mono",
+          "text-xl bg-black/50 p-4 border border-white/20",
+          "backdrop-blur-md opacity-0 animate-[fadeIn_0.5s_ease-in_forwards]",
+        )}
+        style={{ animationDelay: "500ms" }}
+      >
+        <div className={cn("text-xs text-gray-400 mb-1")}>
+          LOADING ASSETS...
+        </div>
+        {toMB(loaded)} MB / {toMB(total)} MB ({progress.toFixed(0)}%)
       </div>
     </Html>
   );
