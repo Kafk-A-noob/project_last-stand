@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import InfoPanel from "../ui/InfoPanel";
+import { useStore } from "@/lib/store";
 
 // propsの型定義: 子要素(children)を受け取るための定義
 interface ViewerLayoutProps {
@@ -10,6 +11,17 @@ interface ViewerLayoutProps {
 }
 
 export default function ViewerLayout({ children }: ViewerLayoutProps) {
+  
+  // アクション取得
+  const setTargetPath = useStore((state) => state.setTargetPath);
+
+  // [TEST] 切り替えテスト用関数
+  const handleNext = () => {
+    // 実際はリストから次のものを取るが、まずは動作テスト
+    console.log("Switching to Radio...");
+    // ※ まだファイルがないので404になるが、動作確認としてはOK
+    setTargetPath("/models/radio.glb");
+  }
   return (
     // relative: 子要素の基準点となる
     // overflow-hidden: 画面外へのはみ出しカット
@@ -77,7 +89,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
 
             {/* 操作ボタン */}
             <div className={cn("flex gap-4")}>
-              <button
+              <button // onClick={handlePrev}
                 className={cn(
                   "px-6 py-2 bg-white/5",
                   "hover:bg-cyan-500/20 text-cyan-200 border",
@@ -87,7 +99,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
               >
                 [ <span className="text-cyan-500">PREV</span> ]
               </button>
-              <button
+              <button onClick={handleNext}
                 className={cn(
                   "px-6 py-2 bg-white/5",
                   "hover:bg-cyan-500/20 text-cyan-200 border",
