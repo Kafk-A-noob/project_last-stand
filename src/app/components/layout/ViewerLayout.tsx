@@ -25,7 +25,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
 
       {/* --- LAYER 2: UI Overlay (Foreground) --- */}
       {/* z-10: 手前のレイヤー */}
-      {/* pointer-events-none: UIの「余白」へのクリックを無視し、後ろの3Dに貫通 */}
+      {/* pointer-events-none: UIの余白へのクリックを無視、後ろの3Dに貫通 */}
       <div
         className={cn(
           "absolute inset-0 z-10 pointer-events-none",
@@ -35,7 +35,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
         {/* Header / Footer */}
 
         {/* --- HEADER --- */}
-        {/* pointer-events-auto: ここだけクリック判定を復活させる */}
+        {/* pointer-events-auto: ここだけクリック判定を復活 */}
         <header
           className={cn(
             "pointer-events-auto flex justify-between",
@@ -56,12 +56,12 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
               {"// TERMINAL_ACCESS: GRANTED"} <br /> {"// USER: KafkA"}
             </p>
           </div>
-          {/* 右側: 情報パネル (ここに追加！) */}
+          {/* 右側: 情報パネル */}
           <InfoPanel />
         </header>
 
         {/* --- FOOTER --- */}
-        {/* pointer-events-auto: 【重要】ボタン等があるため判定を復活 */}
+        {/* pointer-events-auto: ボタン等があるため判定を復活 */}
         <footer className={cn("pointer-events-auto")}>
           <div
             className={cn(
