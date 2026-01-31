@@ -9,10 +9,12 @@ export default function ManualLoader() {
   // Ref(参照)を作成
   const meshRef = useRef<Group>(null);
 
+  // Storeからターゲットパスを取得
+  const targetPath = useStore((state) => state.targetPath)
   // ロード処理
   const gltf = useLoader(
     GLTFLoader,
-    "/models/React_Logo.glb", // publicフォルダにある既存のモデルを使用
+    targetPath,
     (Loader) => {
       // 1. DracoLoaderのインスタンスを作成
       const dracoLoader = new DRACOLoader();

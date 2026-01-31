@@ -25,7 +25,11 @@ export type ArchiveItem = {
 interface AppState {
   // 状態(State)
   isLoaded: boolean;
-  currentModel: ArchiveItem | null;
+  currentModel: ArchiveItem | null; // パネル表示用データ
+
+  // 制御用
+  targetPath: string;
+  setTargetPath: (path: string) => void;
 
   // アクション(Action)
   setModelData: (data: ArchiveItem) => void;
@@ -36,6 +40,9 @@ interface AppState {
 export const useStore = create<AppState>((set) => ({
   isLoaded: false,
   currentModel: null,
+
+  targetPath: "/models/React_Logo.glb" ,
+  setTargetPath: (path) => set({ targetPath: path}),
 
   setModelData: (data) => set({ isLoaded: true, currentModel: data }),
   resetModelData: () => set({ isLoaded: false, currentModel: null }),
