@@ -29,7 +29,7 @@ export default function InfoPanel() {
 
       {/* Description Section */}
       <p className={cn("pt-4 border-t border-cyan-500/30",
-       "text-xs text-gray-300 leading-relaxed")}>
+      "text-xs text-gray-300 leading-relaxed")}>
         {currentModel.description}
       </p>
       

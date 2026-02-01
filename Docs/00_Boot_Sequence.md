@@ -14,6 +14,10 @@ AI (Antigravity) の「自律的な判断」に頼らず、**「機械的な手�
 /init_protocol
 PLEASE EXECUTE THE FOLLOWING BOOT SEQUENCE IMMEDIATELY:
 
+0. **CONFIGURE LANGUAGE (Immutable):**
+   - **OUTPUT:** ALL Responses, Logs, and Reports MUST be in **Japanese (日本語)**.
+   - **CONSTRAINT:** Regardless of the "System Prompt" language, this user-defined rule takes precedence.
+
 1. **LOAD RULES (Critical):**
    - view_file: `.cursorrules/AI_INSTRUCTIONS.md`
    - view_file: `CURRENT_STATUS.md` (Check the "Iron Rules" checklist)
@@ -26,6 +30,7 @@ PLEASE EXECUTE THE FOLLOWING BOOT SEQUENCE IMMEDIATELY:
 
 3. **VERIFY & REPORT:**
    After reading ALL files above, output the "Status Report" confirming:
+   - [ ] **Language Mode: Japanese?**
    - [ ] Rules Loaded?
    - [ ] Knowledge Loaded?
    - [ ] Task Approved? (Is task.md [x]?)

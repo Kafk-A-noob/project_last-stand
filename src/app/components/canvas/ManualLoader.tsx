@@ -41,6 +41,12 @@ export default function ManualLoader() {
       gltf.scene.traverse((obj: Object3D) => {
         if ((obj as Mesh). isMesh) {
           const mesh = obj as Mesh;
+          const mat = mesh.material;
+          // 配列チェック + "Main_Body" で始まる名前なら何でもOKに (例: Main_Body_Radio, Main_Body.001)
+          if (!Array.isArray(mat) && mat.name.startsWith("Main_Body")) {
+            console.log("Target Material Detected:", mat.name);
+            // Future: mat.color.setHex(0xff0000);
+          }
           vertCount += mesh.geometry.attributes.position.count;
           triCount += mesh.geometry.index ? mesh.geometry.index.count / 3 : 0;
         }
