@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { ASSET_MANIFEST } from '@/config/asset-manifest';
 
 // データの型定義
 export type ArchiveItem = {
@@ -41,7 +42,7 @@ export const useStore = create<AppState>((set) => ({
   isLoaded: false,
   currentModel: null,
 
-  targetPath: "/models/React_Logo.glb" ,
+  targetPath: ASSET_MANIFEST[0].path,
   setTargetPath: (path) => set({ targetPath: path}),
 
   setModelData: (data) => set({ isLoaded: true, currentModel: data }),

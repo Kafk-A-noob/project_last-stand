@@ -2,6 +2,7 @@
 
 最終更新日: 2026-01-30 11:52
 ステータス: **Production Ready (Codebase)**
+**⚠️ TRAINING MODE: [ON]** (Auto-Write Tools strictly PROHIBITED)
 
 ## 次回作業への引き継ぎ (Handoff Note)
 
