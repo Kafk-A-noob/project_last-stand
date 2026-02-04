@@ -168,3 +168,77 @@
 - [ ] Check: 表示確認
 
 ---
+
+### [ID-006] カメラ
+
+- **ステータス:** `未着手`
+- **提供者:** クエリ伍長
+
+#### Data
+
+- **Item Name:** Camera (カメラ)
+- **Quote:** 
+- **Description:** 
+
+#### Visual Definition
+
+- **外見の特徴:** 
+- **マテリアル戦略:**
+  - [ ] **Body:** 
+
+#### Implementation
+
+- [ ] Blender: モデリング
+- [ ] Export: Draco圧縮
+- [ ] Code: データ追加
+- [ ] Check: 表示確認
+
+---
+### [ID-007] ゲームボーイ
+
+- **ステータス:** `未着手`
+- **提供者:** わし(ぐり)
+
+#### Data
+
+- **Item Name:** Game Boy (ゲームボーイ)
+- **Quote:** 
+- **Description:** 
+
+#### Visual Definition
+
+- **外見の特徴:** 初代ゲームボーイ
+- **マテリアル戦略:**
+  - [ ] **Body:** プラスチック。グレー
+
+#### Implementation
+
+- [ ] Blender: モデリング
+- [ ] Export: Draco圧縮
+- [ ] Code: データ追加
+- [ ] Check: 表示確認
+
+---
+### [ID-008] 
+
+- **ステータス:** `未着手`
+- **提供者:** 葉月ひさめ
+
+#### Data
+
+- **Item Name:** ランタン
+- **Quote:** 最期に明かりが欲しいから
+- **Description:** 
+
+#### Visual Definition
+
+- **外見の特徴:** 
+- **マテリアル戦略:**
+  - [ ] **Body:** 
+
+#### Implementation
+
+- [ ] Blender: モデリング
+- [ ] Export: Draco圧縮
+- [ ] Code: データ追加
+- [ ] Check: 表示確認
