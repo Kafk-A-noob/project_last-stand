@@ -15,22 +15,22 @@
 
 ```mermaid
 graph TD
-    Root[layout.tsx <br/> (HTML/Font)] --> Page[page.tsx <br/> (Entry Point)]
+    Root["layout.tsx <br/> (HTML/Font)"] --> Page["page.tsx <br/> (Entry Point)"]
     
-    Page --> Layout[ViewerLayout.tsx <br/> (Layer System)]
+    Page --> Layout["ViewerLayout.tsx <br/> (Layer System)"]
     
     subgraph "Layer 2: UI Overlay (Fore)"
-        Layout --> InfoPanel[InfoPanel.tsx <br/> (Detail View)]
-        Layout --> Footer[Footer Controls <br/> (Next/Prev)]
+        Layout --> InfoPanel["InfoPanel.tsx <br/> (Detail View)"]
+        Layout --> Footer["Footer Controls <br/> (Next/Prev)"]
     end
     
     subgraph "Layer 1: 3D Scene (Back)"
-        Layout --> ErrorBoundary[Error Boundary <br/> (Safety Net)]
-        ErrorBoundary --> Scene[Scene.tsx <br/> (Canvas Root)]
+        Layout --> ErrorBoundary["Error Boundary <br/> (Safety Net)"]
+        ErrorBoundary --> Scene["Scene.tsx <br/> (Canvas Root)"]
         
-        Scene --> Suspense[Suspense <br/> (Async Wait)]
-        Suspense --> SmartLoader[SmartLoader.tsx <br/> (Loading UI)]
-        Suspense --> ManualLoader[ManualLoader.tsx <br/> (Logic Core)]
+        Scene --> Suspense["Suspense <br/> (Async Wait)"]
+        Suspense --> SmartLoader["SmartLoader.tsx <br/> (Loading UI)"]
+        Suspense --> ManualLoader["ManualLoader.tsx <br/> (Logic Core)"]
     end
 ```
 

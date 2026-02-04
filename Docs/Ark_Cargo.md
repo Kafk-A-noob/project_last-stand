@@ -1,5 +1,25 @@
 # The Digital Ark - Artifacts Manifest
 
+## Blender作業用: データ実装スペック
+
+コード側 (ManualLoader.tsx) は、GLBファイルに以下のデータが含まれていることを前提に動く。
+
+1. マテリアル命名規則 (Material Naming)
+ルール: マテリアル名は必ず Main_Body で始めること。
+ OK: Main_Body, Main_Body_Radio, Main_Body.001
+ NG: Radio_Mat, Material.001
+理由: プログラムが「色を変えるべき主パーツ」を識別するために使用している。
+2. カスタムプロパティ (Custom Properties)
+場所: エクスポートするオブジェクト（またはScene）の Custom Properties パネル。
+必須キー (Type: String):
+name: モデル名 (例: "Retro Radio")
+quote: キャッチコピー (例: "Music for the void.")
+description: 詳細説明
+contributor: 作者名 (例: "User Name")
+Export設定: glTFエクスポート時、「Include > Custom Properties」 にチェックを入れるのを忘れないこと。
+
+GLBを public/models/ に放り込むだけで、サイト上に認識・表示される
+
 ## テンプレート (コピー用)
 
 ### [ID-00X] アイテム名
@@ -149,7 +169,7 @@
 #### Data (Web表示用)
 
 - **Item Name:** Favorite Mug (お気に入りのマグカップ)
-- **Quote (キャプション):** [世界が終わってものどは乾くし腹は減るから]
+- **Quote (キャプション):** [世界が終わっても喉は乾くし腹は減るから]
 - **Description:** [最後の一杯]
 
 #### Visual Definition (Blender設定)
