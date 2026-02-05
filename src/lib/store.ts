@@ -6,20 +6,25 @@ export type ArchiveItem = {
   // System
   id: string;          // e.g. "item-001-radio"
   active: boolean;     // 開発中フラグ
+  
   // Narrative (The Soul)
   name: string;        // e.g. "Retro Radio"
   quote: string;       // e.g. "最期まで日常らしい時間を..."
   description: string; // e.g. "いつもの時間、いつものチャンネル。"
   contributor: string; // e.g. "Nana"
+
   // Asset (The Body)
-  modelPath: string;   // e.g. "/models/radio.glb"
+  path: string;   // e.g. "/models/radio.glb"
   camPos?: [number, number, number]; // ベストアングル
-  // Tech Specs (The Flex)
+
+  // Tech Specs (The Flex) - 将来用
+  /*
   techSpecs: {
     vertices: number;
     triangles: number;
     compression: string; // "Draco" or "None"
   };
+  */
 };
 
 // ストアの定義

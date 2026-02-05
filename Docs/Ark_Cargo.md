@@ -197,14 +197,14 @@ GLBを public/models/ に放り込むだけで、サイト上に認識・表示�
 #### Data
 
 - **Item Name:** Camera (カメラ)
-- **Quote:** 
-- **Description:** 
+- **Quote:** 今まで撮ってきた景色を見ながら最後を迎えたいから
+- **Description:** いつかの景色を、いつまでも
 
 #### Visual Definition
 
-- **外見の特徴:** 
+- **外見の特徴:**
 - **マテリアル戦略:**
-  - [ ] **Body:** 
+  - [ ] **Body:**
 
 #### Implementation
 
@@ -214,6 +214,7 @@ GLBを public/models/ に放り込むだけで、サイト上に認識・表示�
 - [ ] Check: 表示確認
 
 ---
+
 ### [ID-007] ゲームボーイ
 
 - **ステータス:** `未着手`
@@ -222,8 +223,8 @@ GLBを public/models/ に放り込むだけで、サイト上に認識・表示�
 #### Data
 
 - **Item Name:** Game Boy (ゲームボーイ)
-- **Quote:** 
-- **Description:** 
+- **Quote:** 一人でも暇つぶしできるから
+- **Description:** 最後の相棒
 
 #### Visual Definition
 
@@ -239,7 +240,8 @@ GLBを public/models/ に放り込むだけで、サイト上に認識・表示�
 - [ ] Check: 表示確認
 
 ---
-### [ID-008] 
+
+### [ID-008]
 
 - **ステータス:** `未着手`
 - **提供者:** 葉月ひさめ
@@ -247,14 +249,40 @@ GLBを public/models/ に放り込むだけで、サイト上に認識・表示�
 #### Data
 
 - **Item Name:** ランタン
-- **Quote:** 最期に明かりが欲しいから
-- **Description:** 
+- **Quote:** 最後を迎えるなら明るいほうがいいから
+- **Description:** 最後の灯火
 
 #### Visual Definition
 
-- **外見の特徴:** 
+- **外見の特徴:**
 - **マテリアル戦略:**
-  - [ ] **Body:** 
+  - [ ] **Body:**
+
+#### Implementation
+
+- [ ] Blender: モデリング
+- [ ] Export: Draco圧縮
+- [ ] Code: データ追加
+- [ ] Check: 表示確認
+
+---
+
+### [ID-009]
+
+- **ステータス:** `未着手`
+- **提供者:** ひるねこ
+
+#### Data
+
+- **Item Name:** 家族やペットの写真
+- **Quote:** // TODO 後で聞く
+- **Description:** ありがとう、さよなら
+
+#### Visual Definition
+
+- **外見の特徴:**
+- **マテリアル戦略:**
+  - [ ] **Body:**
 
 #### Implementation
 

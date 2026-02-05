@@ -20,12 +20,14 @@ export default function InfoPanel() {
         &quot;{currentModel.quote}&quot;
       </div>
 
-      {/* Tech Spec Section */}
+      {/* Tech Spec Section */}  {/* 一時的に非表示 */}
+      {/*
       <div className="space-y-1 mb-4 text-xs font-bold border-l-2 border-gray-700 pl-2">
         <p>VERT: {currentModel.techSpecs.vertices.toLocaleString()}</p>
         <p>TRIS: {currentModel.techSpecs.triangles.toLocaleString()}</p>
         <p>COMP: {currentModel.techSpecs.compression}</p>
       </div>
+      */}
 
       {/* Description Section */}
       <p className={cn("pt-4 border-t border-cyan-500/30",
