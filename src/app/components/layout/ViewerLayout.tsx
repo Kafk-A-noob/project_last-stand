@@ -91,20 +91,33 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
             {/* 操作ボタン */}
             <div className={cn("flex gap-4")}>
               {/* マニフェストからボタンを自動生成 */}
-              {ASSET_MANIFEST.map((item) => (
+              {ASSET_MANIFEST.map((item) => {
+                const isLocked = !item.active;
+                return (
                 <button
                   key={item.id}
-                  onClick={() => setTargetPath(item.path)}
+                  disabled={isLocked}
+                  onClick={() => {
+                    if (!isLocked) {
+                      setTargetPath(item.path);
+                    }
+                  }}
                   className={cn(
-                    "px-6 py-2 bg-white/5",
-                    "hover:bg-cyan-500/20 text-cyan-200 border",
-                    "border-white/10 hover:border-cyan-500/50 rounded",
-                    "transition-all active:scale-95",
+                    "px-6 py-2 text-xs border rounded transition-all",
+                    // Active Style
+                    !isLocked && "bg-white/5 text-cyan-200 border-white/10",
+                    "hover:bg-cyan-500/20 hover:border-cyan-500/50",
+                    "active:scale-95",
+                    // Locked Style
+                    isLocked && "bg-black/20 text-gray-600",
+                    "border-gray-800 cursor-not-allowed opacity-50"
                 )}
               >
-                [ {item.name} ]
+                [ {item.name} {isLocked && <span className="text-[10px] ml-1">
+                  OFFLINE</span>} ]
               </button>
-              ))}
+                );
+              })}
             </div>
           </div>
         </footer>
