@@ -9,6 +9,7 @@
 ### Protocol Enforcement (Strict)
 
 次回以降の全セッションにおいて、以下のルール遵守状況を **タスク開始前** に確認すること。
+
 1. **Rule #138 (Intent Log):** 実装したコードの「設計意図」と「デバッグ戦略」が `Docs/Implementation_Intent/` に記録されているか？
 2. **Rule #81 (Process Log):** `Docs/Work_Log/{YY'MM-DD}/` に当日のログがあるか？
 3. **Safety Protocol:** `task.md` の承認チェックボックスは物理的に `[x]` になっているか？
@@ -25,8 +26,8 @@
 
 ### 🚨 Critical Path (順序厳守)
 
-1.  **Git Sync:** 帰宅後、まず `git pull` を実行し、**02-06作成の膨大なドキュメント群** を取り込む。
-2.  **Phase 3.5 (Asset):**
+1. **Git Sync:** 帰宅後、まず `git pull` を実行し、**02-06作成の膨大なドキュメント群** を取り込む。
+2. **Phase 3.5 (Asset):**
     - `ID-001 Radio` の制作を開始する。
     - 迷ったら `Roadmap_Overview.md` か `Tech_Report` を参照すること。
 
