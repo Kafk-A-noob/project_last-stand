@@ -40,6 +40,10 @@ interface AppState {
   // アクション(Action)
   setModelData: (data: ArchiveItem) => void;
   resetModelData: () => void;
+
+  // Next/Prev Actions
+  goToNext: () => void;
+  goToPrev: () => void;
 }
 
 // ストア作成
@@ -52,4 +56,39 @@ export const useStore = create<AppState>((set) => ({
 
   setModelData: (data) => set({ isLoaded: true, currentModel: data }),
   resetModelData: () => set({ isLoaded: false, currentModel: null }),
+
+  goToNext: () => {
+    // 現在のステート取得
+    set((state) => {
+      // activeなアイテムのみのリストを作る
+      const activeItems = ASSET_MANIFEST.filter((item) => item.active);
+      if (activeItems.length === 0) return state;
+      //現在のインデックスを探す
+      const currentIndex = activeItems.findIndex(
+        (item) => item.path === state.targetPath,
+      );
+      // 次のインデックスを計算
+      const nextIndex = (currentIndex + 1) % activeItems.length;
+      // 新しいパスをセット
+      return { targetPath: activeItems[nextIndex].path };
+    });
+  },
+
+  goToPrev: () => {
+    set((state) => {
+      const activeItems = ASSET_MANIFEST.filter((item) => item.active);
+      if (activeItems.length === 0) return state;
+
+      const currentIndex = activeItems.findIndex(
+        (item) => item.path === state.targetPath,
+      );
+
+      // 前のインデックスを計算
+        // Tip:(currentIndex - 1 + length) % length で負の値を防ぐ
+      const previndex = 
+      (currentIndex - 1 + activeItems.length) % activeItems.length;
+
+      return { targetPath: activeItems[previndex].path };
+    })
+  },
 }));

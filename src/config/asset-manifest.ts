@@ -9,7 +9,7 @@ import { ArchiveItem } from "@/lib/store"
 export const ASSET_MANIFEST: ArchiveItem[] = [
   {
     id: "item-001-radio",
-    active: false, // まだモデルがないので false
+    active: true, // Modeling Party Target: ON
     name: "Radio",
     path: "/models/radio.glb",
     quote: "最期まで日常らしい時間を感じたいから。",

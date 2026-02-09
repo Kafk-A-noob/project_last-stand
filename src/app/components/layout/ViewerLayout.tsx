@@ -12,8 +12,11 @@ interface ViewerLayoutProps {
 }
 
 export default function ViewerLayout({ children }: ViewerLayoutProps) {
-  // アクション取得
-  const setTargetPath = useStore((state) => state.setTargetPath);
+  // アクション取得(既存の setTargetPath はもう使わないかも)
+  // const setTargetPath = useStore((state) => state.setTargetPath);
+  const currentModel = useStore((state) => state.currentModel);
+  const goToNext = useStore((state) => state.goToNext);
+  const goToPrev = useStore((state) => state.goToPrev);
 
   /* [TEST] 切り替えテスト用関数
   const handleNext = () => {
@@ -88,36 +91,50 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
               <p>COORD: 35.6895° N, 139.6917° E</p>
             </div>
 
-            {/* 操作ボタン */}
+            {/* 操作ボタン(Footer) */}
             <div className={cn("flex gap-4")}>
-              {/* マニフェストからボタンを自動生成 */}
-              {ASSET_MANIFEST.map((item) => {
-                const isLocked = !item.active;
-                return (
-                <button
-                  key={item.id}
-                  disabled={isLocked}
-                  onClick={() => {
-                    if (!isLocked) {
-                      setTargetPath(item.path);
-                    }
-                  }}
-                  className={cn(
-                    "px-6 py-2 text-xs border rounded transition-all",
-                    // Active Style
-                    !isLocked && "bg-white/5 text-cyan-200 border-white/10",
-                    "hover:bg-cyan-500/20 hover:border-cyan-500/50",
-                    "active:scale-95",
-                    // Locked Style
-                    isLocked && "bg-black/20 text-gray-600",
-                    "border-gray-800 cursor-not-allowed opacity-50"
-                )}
+            {/* [ < ] Prev Button */}
+            <button
+              onClick={goToPrev}
+              className={cn(
+                "px-4 py-2 text-xs border-white/10 rounded",
+                "hober:bg-cyan-500/20 hover:border-cyan-500/50",
+                "transition-all active:scale-95",
+              )}
               >
-                [ {item.name} {isLocked && <span className="text-[10px] ml-1">
-                  OFFLINE</span>} ]
+                {"<"}
               </button>
-                );
-              })}
+              
+              {/* [ Label ] Current Item Name */}
+              <div className={cn("text-xs text-cyan-200 font-bold min-w-[100px] text-center")}>
+                {/* モデルがロードされるまでは Loading... と表示 */}
+                {currentModel ? currentModel.name : "LOADING..."}
+              </div>
+
+              {/* [ > ] Next Button */}
+              <button
+                onClick={goToNext}
+                className={cn(
+                  "px-4 py-2 text-xs border-white/10 rounded",
+                  "hober:bg-cyan-500/20 hover:border-cyan-500/50",
+                  "transition-all active:scale-95",
+                )}
+                >
+                  {">"}
+                </button>
+
+                {/* [ Menu ] Button (Placeholder) */}
+                <button
+                  onClick={() => {}}
+                  className={cn(
+                    "px-4 py-2 text-xs border-white/10 rounded",
+                    "hober:bg-cyan-500/20 hover:border-cyan-500/50",
+                    "transition-all active:scale-95",
+                  )}
+                  disabled // 今日はまだ作らない
+                  >
+                    [MENU]
+                  </button>
             </div>
           </div>
         </footer>
