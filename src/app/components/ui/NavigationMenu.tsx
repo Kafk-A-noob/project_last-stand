@@ -16,6 +16,7 @@ export default function NavigationMenu({ onClose }:
     return (
       // 背景 (黒の半透明)
       <div className={cn("fixed inset-0 z-50 bg-black/90",
+        "pointer-events-auto",
         "text-white p-8 overflow-y-auto",)}>
           {/* 閉じるボタン (右上) */}
           <div className="flex justify-end mb-8">
