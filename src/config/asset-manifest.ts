@@ -8,10 +8,19 @@ import { ArchiveItem } from "@/lib/store"
 */
 export const ASSET_MANIFEST: ArchiveItem[] = [
   {
+    id: "item-000-React_Logo",
+    active: true, // Modeling Party Target: ON
+    name: "React_Logo",
+    path: "/models/React_Logo.glb", // Placeholder: React Logo
+    quote: "仮置き",
+    description: "このシステムの心臓部。",
+    contributor: "KafkA＿",
+  },
+  {
     id: "item-001-radio",
     active: true, // Modeling Party Target: ON
     name: "Radio",
-    path: "/models/React_Logo.glb", // Placeholder: React Logo
+    path: "/models/radio.glb", // Placeholder: 
     quote: "最期まで日常らしい時間を感じたいから。",
     description: "いつもの時間、いつものチャンネル。",
     contributor: "Nana",
