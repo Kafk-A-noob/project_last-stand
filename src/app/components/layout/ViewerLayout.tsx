@@ -1,10 +1,10 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
 import InfoPanel from "../ui/InfoPanel";
 import { useStore } from "@/lib/store";
-import { ASSET_MANIFEST } from "@/config/asset-manifest";
+import NavigationMenu from "../ui/NavigationMenu";
 
 // propsの型定義: 子要素(children)を受け取るための定義
 interface ViewerLayoutProps {
@@ -17,6 +17,8 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
   const currentModel = useStore((state) => state.currentModel);
   const goToNext = useStore((state) => state.goToNext);
   const goToPrev = useStore((state) => state.goToPrev);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   /* [TEST] 切り替えテスト用関数
   const handleNext = () => {
@@ -98,7 +100,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
               onClick={goToPrev}
               className={cn(
                 "px-4 py-2 text-xs border-white/10 rounded",
-                "hober:bg-cyan-500/20 hover:border-cyan-500/50",
+                "hover:bg-cyan-500/20 hover:border-cyan-500/50",
                 "transition-all active:scale-95",
               )}
               >
@@ -116,7 +118,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
                 onClick={goToNext}
                 className={cn(
                   "px-4 py-2 text-xs border-white/10 rounded",
-                  "hober:bg-cyan-500/20 hover:border-cyan-500/50",
+                  "hover:bg-cyan-500/20 hover:border-cyan-500/50",
                   "transition-all active:scale-95",
                 )}
                 >
@@ -128,16 +130,17 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
                   onClick={() => {}}
                   className={cn(
                     "px-4 py-2 text-xs border-white/10 rounded",
-                    "hober:bg-cyan-500/20 hover:border-cyan-500/50",
+                    "hover:bg-cyan-500/20 hover:border-cyan-500/50",
                     "transition-all active:scale-95",
                   )}
-                  disabled // 今日はまだ作らない
                   >
                     [MENU]
                   </button>
             </div>
           </div>
         </footer>
+        {/* Menu Overlay */}
+        {isMenuOpen && <NavigationMenu onClose={() => setIsMenuOpen(false)} />}
       </div>
     </div>
   );
