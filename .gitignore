@@ -45,3 +45,4 @@ next-env.d.ts
 *.gltf
 *.draco
 public/models/*
+.env*.local
