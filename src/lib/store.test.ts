@@ -38,7 +38,7 @@ describe('useStore (Navigation Logic)', () => {
     (現状アクティブなのは Logo と Radio だけなので、Radioから次は Logo に戻るはず)
     まずRadioへ
     */
-   
+  
     act(() => {
       result.current.goToNext();
     });
