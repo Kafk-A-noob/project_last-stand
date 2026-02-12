@@ -127,7 +127,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
 
                 {/* [ Menu ] Button (Placeholder) */}
                 <button
-                  onClick={() => {}}
+                  onClick={() => setIsMenuOpen(true)}
                   className={cn(
                     "px-4 py-2 text-xs border-white/10 rounded",
                     "hover:bg-cyan-500/20 hover:border-cyan-500/50",
