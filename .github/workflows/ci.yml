@@ -1,0 +1,37 @@
+name: CI
+
+# トリガー: 「いつ」動くか
+on:
+  push:
+    branches: [ "main" ] # mainにプッシュされた時
+  pull_request:
+    branches: [ "main" ] # mainへのPRが作られた時
+
+# どこで動くか
+jobs:
+  build:
+    name: Lint & Test
+    runs-on: ubuntu-latest # Linux環境(仮想マシン)を起動
+
+    steps:
+      # 1. ソースコードを持ってくる (git clone相当)
+      - uses: actions/checkout@v4
+
+      # 2. Node.js環境を作る
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm" # 重要: 2回目以降を高速化
+
+      # 3. 依存ライブラリを入れる (厳密モード)
+      - name: Install Dependencies
+        run: npm ci
+
+      # 4. 文法チェック (Compiler Check)
+      - name: Run Lint
+        run: npm run lint
+
+      # 5. テスト実行 (Unit Test)
+      - name: Run Test
+        run: npm run test
