@@ -10,22 +10,18 @@ export default function ManualLoader() {
   const meshRef = useRef<Group>(null);
 
   // Storeからターゲットパスを取得
-  const targetPath = useStore((state) => state.targetPath)
+  const targetPath = useStore((state) => state.targetPath);
   // ロード処理
-  const gltf = useLoader(
-    GLTFLoader,
-    targetPath,
-    (Loader) => {
-      // 1. DracoLoaderのインスタンスを作成
-      const dracoLoader = new DRACOLoader();
+  const gltf = useLoader(GLTFLoader, targetPath, (Loader) => {
+    // 1. DracoLoaderのインスタンスを作成
+    const dracoLoader = new DRACOLoader();
 
-      // 2. デコーダーの場所を指定 (public/draco/)
-      dracoLoader.setDecoderPath("/draco/");
+    // 2. デコーダーの場所を指定 (public/draco/)
+    dracoLoader.setDecoderPath("/draco/");
 
-      // 3. GLTFLoaderにDracoLoaderを合体
-      Loader.setDRACOLoader(dracoLoader);
-    },
-  );
+    // 3. GLTFLoaderにDracoLoaderを合体
+    Loader.setDRACOLoader(dracoLoader);
+  });
 
   const setModel = useStore((state) => state.setModelData);
 
@@ -39,7 +35,7 @@ export default function ManualLoader() {
       let triCount = 0;
 
       gltf.scene.traverse((obj: Object3D) => {
-        if ((obj as Mesh). isMesh) {
+        if ((obj as Mesh).isMesh) {
           const mesh = obj as Mesh;
           const mat = mesh.material;
           // 配列チェック + "Main_Body" で始まる名前なら何でもOKに (例: Main_Body_Radio, Main_Body.001)
@@ -60,16 +56,12 @@ export default function ManualLoader() {
         // Narrative
         name: meta.name || "React Logo",
         quote: meta.quote || "The beginning of everything.",
-        description: meta.description || "A rotating atom symbol representing the declarative UI library.",
+        description:
+          meta.description ||
+          "A rotating atom symbol representing the declarative UI library.",
         contributor: meta.contributor || "Meta Open Source",
         // Asset
-        modelPath: "/models/React_Logo.glb",
-        // Tech Specs (The Flex)
-        techSpecs: {
-          vertices: vertCount,
-          triangles: triCount,
-          compression: "Draco",
-        },
+        path: "/models/React_Logo.glb",
       });
     }
   }, [gltf, setModel]);
