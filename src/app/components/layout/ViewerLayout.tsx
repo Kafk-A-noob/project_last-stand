@@ -19,7 +19,6 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
   const goToPrev = useStore((state) => state.goToPrev);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
   /* [TEST] 切り替えテスト用関数
   const handleNext = () => {
     // 実際はリストから次のものを取るが、まずは動作テスト
@@ -95,20 +94,24 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
 
             {/* 操作ボタン(Footer) */}
             <div className={cn("flex gap-4")}>
-            {/* [ < ] Prev Button */}
-            <button
-              onClick={goToPrev}
-              className={cn(
-                "px-4 py-2 text-xs border-white/10 rounded",
-                "hover:bg-cyan-500/20 hover:border-cyan-500/50",
-                "transition-all active:scale-95",
-              )}
+              {/* [ < ] Prev Button */}
+              <button
+                onClick={goToPrev}
+                className={cn(
+                  "px-4 py-2 text-xs border-white/10 rounded",
+                  "hover:bg-cyan-500/20 hover:border-cyan-500/50",
+                  "transition-all active:scale-95",
+                )}
               >
                 {"<"}
               </button>
-              
+
               {/* [ Label ] Current Item Name */}
-              <div className={cn("text-xs text-cyan-200 font-bold min-w-[100px] text-center")}>
+              <div
+                className={cn(
+                  "text-xs text-cyan-200 font-bold min-w-[100px] text-center",
+                )}
+              >
                 {/* モデルがロードされるまでは Loading... と表示 */}
                 {currentModel ? currentModel.name : "LOADING..."}
               </div>
@@ -121,27 +124,28 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
                   "hover:bg-cyan-500/20 hover:border-cyan-500/50",
                   "transition-all active:scale-95",
                 )}
-                >
-                  {">"}
-                </button>
+              >
+                {">"}
+              </button>
 
-                {/* [ Menu ] Button (Placeholder) */}
-                <button
-                  onClick={() => setIsMenuOpen(true)}
-                  className={cn(
-                    "px-4 py-2 text-xs border-white/10 rounded",
-                    "hover:bg-cyan-500/20 hover:border-cyan-500/50",
-                    "transition-all active:scale-95",
-                  )}
-                  >
-                    [MENU]
-                  </button>
+              {/* [ Menu ] Button (Placeholder) */}
+              <button
+                onClick={() => setIsMenuOpen(true)}
+                className={cn(
+                  "px-4 py-2 text-xs border-white/10 rounded",
+                  "hover:bg-cyan-500/20 hover:border-cyan-500/50",
+                  "transition-all active:scale-95",
+                )}
+              >
+                [MENU]
+              </button>
             </div>
           </div>
         </footer>
-        {/* Menu Overlay */}
-        {isMenuOpen && <NavigationMenu onClose={() => setIsMenuOpen(false)} />}
       </div>
+
+      {/* Menu Overlay */}
+      {isMenuOpen && <NavigationMenu onClose={() => setIsMenuOpen(false)} />}
     </div>
   );
 }
