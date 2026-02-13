@@ -1,7 +1,7 @@
 # Mission 05: The Digital Ark - Asset Production Specs
 
 **Target:** Blender (Instruction for AI Advisor & Human Operator)
-**Goal:** `Docs/Ark_Cargo.md` に記載されたアイテを作成し、Web互換の `.glb` として出力する。
+**Goal:** `Docs/Ark_Cargo.md` に記載されたアイテムを作成し、Web互換の `.glb` として出力する。
 
 ---
 
@@ -12,8 +12,7 @@ Webブラウザ (スマホ含む) で快適に動作させるための絶対的�
 
 ### 1. Geometry (形状)
 
-- **Polycount:** 1モデルあたり **3,000 〜 5,000 三角面 (Tris)** 以内目安。
-  - ハイポリ厳禁。Subdivision Surfaceは適用(Apply)してから減量すること。
+- **Polycount:** 1モデルあたり **Max 20,000 tris** (推奨: 15,000以下)
 - **Topology:** 四角形ポリゴン推奨だが、最終的に三角形化されても破綻しない流れで作る。
 
 ### 2. Materials & Textures (質感)

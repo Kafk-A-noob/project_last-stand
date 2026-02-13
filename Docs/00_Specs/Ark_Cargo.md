@@ -9,6 +9,7 @@
  OK: Main_Body, Main_Body_Radio, Main_Body.001
  NG: Radio_Mat, Material.001
 理由: プログラムが「色を変えるべき主パーツ」を識別するために使用している。
+
 2. カスタムプロパティ (Custom Properties)
 場所: エクスポートするオブジェクト（またはScene）の Custom Properties パネル。
 必須キー (Type: String):

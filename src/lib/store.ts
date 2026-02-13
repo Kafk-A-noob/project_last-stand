@@ -17,14 +17,12 @@ export type ArchiveItem = {
   path: string;   // e.g. "/models/radio.glb"
   camPos?: [number, number, number]; // ベストアングル
 
-  // Tech Specs (The Flex) - 将来用
-  /*
-  techSpecs: {
+  // Tech Specs (The Flex)
+  techSpecs?: {
     vertices: number;
     triangles: number;
     compression: string; // "Draco" or "None"
   };
-  */
 };
 
 // ストアの定義
@@ -36,9 +34,10 @@ interface AppState {
   // 制御用
   targetPath: string;
   setTargetPath: (path: string) => void;
+  setIsLoaded: (status: boolean) => void;// ロード状態だけを操作する
 
   // アクション(Action)
-  setModelData: (data: ArchiveItem) => void;
+  setModelData: (data: Partial<ArchiveItem>) => void;
   resetModelData: () => void;
 
   // Next/Prev Actions
@@ -49,13 +48,24 @@ interface AppState {
 // ストア作成
 export const useStore = create<AppState>((set) => ({
   isLoaded: false,
-  currentModel: null,
+  currentModel: ASSET_MANIFEST[0],// nullではなく初期値を入れる
 
   targetPath: ASSET_MANIFEST[0].path,
-  setTargetPath: (path) => set({ targetPath: path}),
+  setTargetPath: (path) => {
+    // パスから次のモデルデータを探す
+    const target = ASSET_MANIFEST.find((item) => item.path === path);
 
-  setModelData: (data) => set({ isLoaded: true, currentModel: data }),
+    // パス変更と同時にモデルデータも更新してしまう (ロードを待たない)
+    set({ targetPath: path, currentModel: target || null, isLoaded: false });
+  },
+
+  setModelData: (data) => set((state) => ({
+    isLoaded: true,
+    currentModel: state.currentModel ? {...state.currentModel, ...data} : null
+  })),
   resetModelData: () => set({ isLoaded: false, currentModel: null }),
+  // [New] ロード状態のみ更新するアクション
+  setIsLoaded: (status) => set({ isLoaded: status }),
 
   goToNext: () => {
     // 現在のステート取得
@@ -69,8 +79,14 @@ export const useStore = create<AppState>((set) => ({
       );
       // 次のインデックスを計算
       const nextIndex = (currentIndex + 1) % activeItems.length;
+      // 次のアイテムデータを確定させる
+      const nextItem = activeItems[nextIndex];
       // 新しいパスをセット
-      return { targetPath: activeItems[nextIndex].path };
+      return {
+        targetPath: nextItem.path,
+        currentModel: nextItem,// ここで即座にUIを更新(Optimistic Update)
+        isLoaded: false
+      };
     });
   },
 
@@ -87,8 +103,14 @@ export const useStore = create<AppState>((set) => ({
         // Tip:(currentIndex - 1 + length) % length で負の値を防ぐ
       const previndex = 
       (currentIndex - 1 + activeItems.length) % activeItems.length;
+      // 前のアイテムデータを確定
+      const prevItem = activeItems[previndex];
 
-      return { targetPath: activeItems[previndex].path };
+      return {
+        targetPath: prevItem.path,
+        currentModel: prevItem, // 即UI更新
+        isLoaded: false
+      };
     })
   },
 }));

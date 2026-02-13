@@ -23,7 +23,7 @@ export default function ManualLoader() {
     Loader.setDRACOLoader(dracoLoader);
   });
 
-  const setModel = useStore((state) => state.setModelData);
+  const updateModel = useStore((state) => state.setModelData);
 
   useEffect(() => {
     if (gltf) {
@@ -49,22 +49,15 @@ export default function ManualLoader() {
       });
 
       // ストアに保存
-      setModel({
-        // System
-        id: "item-000-prototype",
-        active: true,
-        // Narrative
-        name: meta.name || "React Logo",
-        quote: meta.quote || "The beginning of everything.",
-        description:
-          meta.description ||
-          "A rotating atom symbol representing the declarative UI library.",
-        contributor: meta.contributor || "Meta Open Source",
-        // Asset
-        path: "/models/React_Logo.glb",
+      updateModel({
+        techSpecs: {
+          vertices: vertCount,
+          triangles: triCount,
+          compression: "Draco",
+        }
       });
     }
-  }, [gltf, setModel]);
+  }, [gltf, updateModel]);
 
   // Load完了後のデータ構造を確認するためのログ
   console.log("Loaded GLTF:", gltf);

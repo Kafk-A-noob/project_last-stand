@@ -1,14 +1,13 @@
-
 # 作戦計画書：Operation Last-Stand
 
 ## 1. 作戦概要 (Mission Profile)
 
-* **最終目標:** 2026年3月末までに、実務レベルの「Web3Dポートフォリオ」を完成させ、クリエイティブ・フロントエンド（WebGLエンジニア）として再就職を勝ち取る。
-* **ターゲット:** Web制作会社（プロダクション）、テック系事業会社の「演出・表現」を重視するポジション。
-* **勝算（強み）:**
-* Unity/VRChatで培った「3D空間認識能力」と「最適化（軽量化）の感覚」。
-* React Three Fiber (R3F) による「宣言的UI」と「3D」のハイブリッド実装力。
-* AI（Antigravity）を活用した、コード暗記に頼らない「設計・構築力」。
+- **最終目標:** 2026年3月末までに、実務レベルの「Web3Dポートフォリオ」を完成させ、クリエイティブ・フロントエンド（WebGLエンジニア）として再就職を勝ち取る。
+- **ターゲット:** Web制作会社（プロダクション）、テック系事業会社の「演出・表現」を重視するポジション。
+- **勝算（強み）:**
+- Unity/VRChatで培った「3D空間認識能力」と「最適化（軽量化）の感覚」。
+- React Three Fiber (R3F) による「宣言的UI」と「3D」のハイブリッド実装力。
+- AI（Antigravity）を活用した、コード暗記に頼らない「設計・構築力」。
 
 ---
 
@@ -20,19 +19,19 @@
 
 GitHubリポジトリのルート（直下）に以下を配置し、常に最新に保つこと。
 
-* **`.cursorrules` (または `AI_INSTRUCTIONS.md`)**
-* **役割:** Antigravity（AI）への「人格・ルール」指示書。後述のプロンプトを記載。
+- **`.cursorrules` (または `AI_INSTRUCTIONS.md`)**
+- **役割:** Antigravity（AI）への「人格・ルール」指示書。後述のプロンプトを記載。
 
-* **`CURRENT_STATUS.md`**
-* **役割:** 開発日誌。
-* **記載内容:** 「今どこまで実装したか」「次は何をするか」「現在発生しているバグ」。作業終了時に必ずAIに更新させ、コミットする。
+- **`CURRENT_STATUS.md`**
+- **役割:** 開発日誌。
+- **記載内容:** 「今どこまで実装したか」「次は何をするか」「現在発生しているバグ」。作業終了時に必ずAIに更新させ、コミットする。
 
 ### 技術スタック (Tech Stack)
 
-* **Framework:** Next.js (App Router) / TypeScript
-* **Styling:** Tailwind CSS
-* **3D Core:** Three.js / React Three Fiber (R3F) / @react-three/drei
-* **3D Assets:** Blender (glTF Pipeline)
+- **Framework:** Next.js (App Router) / TypeScript
+- **Styling:** Tailwind CSS
+- **3D Core:** Three.js / React Three Fiber (R3F) / @react-three/drei
+- **3D Assets:** Blender (glTF Pipeline)
 
 ### アセット管理戦略 (Asset Mobility Stratagem)
 
@@ -52,11 +51,11 @@ VRChat(PC)の常識を捨て、Webブラウザ(スマホ)の制約に従うこ�
 2. **容量制限:** サイト全体のリソースを **5MB〜10MB** 以内に抑える（Quest対応/Very Poor基準）。
 3. **テクスチャ:**
 
-* 解像度: 基本 **1K (1024px)**。最大でも2K。4Kは死罪。
-* 形式: **WebP** または JPG。PNGは使用禁止。
-* 構成: **ORMマップ** (Occlusion, Roughness, Metalness) を使い、RGBAチャンネルにパックして通信数を減らす。
+- 解像度: 基本 **1K (1024px)**。最大でも2K。4Kは死罪。
+- 形式: **WebP** または JPG。PNGは使用禁止。
+- 構成: **ORMマップ** (Occlusion, Roughness, Metalness) を使い、RGBAチャンネルにパックして通信数を減らす。
 
-1. **ポリゴン:** ローポリゴンを徹底し、Normal Mapでディテールを稼ぐ。
+1. **ポリゴン:** Hero Asset (Main) は **Max 20,000 tris** まで許容。Environment (Sub) は 5,000 tris 以下。Normal Mapでディテールを稼ぐ。
 
 ---
 
@@ -72,6 +71,7 @@ VRChat(PC)の常識を捨て、Webブラウザ(スマホ)の制約に従うこ�
 私の「技術顧問」として、以下のガイドラインに厳格に従って支援してください。
 
 ## 1. Unityユーザー向けの翻訳と解説
+
 - 文法（Syntax）の暗記よりも、**「構造（Architecture）」と「挙動の理由」** の理解を優先してください。
 - コードを提示する際は、必ず **「Unityの概念への翻訳」** を行ってください。
   - 例: `JSX` → Hierarchy構造
@@ -80,17 +80,18 @@ VRChat(PC)の常識を捨て、Webブラウザ(スマホ)の制約に従うこ�
   - 例: `useEffect` → Start/OnEnable または副作用の管理
 
 ## 2. アカデミックな設計と実務的強度
+
 - 「動けばいい」コードは禁止です。Reactの流儀（単方向データフロー、コンポーネント指向）に沿った、保守性の高い設計を提示してください。
 - なぜそのHooksを使うのか？ なぜその構成にするのか？ という **「設計の意図」** を論理的に説明してください。
 - TypeScriptの型定義は `any` を禁止し、厳格に行ってください。
 
 ## 3. WebGLのパフォーマンス制約（最重要）
+
 - Webブラウザはリソースが限られています。GPU負荷、DrawCall、メモリ使用量に常に配慮してください。
 - **「不要な再レンダリング」** は徹底的に排除し、`useMemo` や `useCallback` の適切な使用を指導してください。
 - 3Dモデルは **glTF形式 / PBRワークフロー** を前提とし、重すぎるアセットには警告を出してください。
 
 私の手となり足となり、最強のポートフォリオ構築を導いてください。
-
 ```
 
 ---
@@ -101,32 +102,32 @@ VRChat(PC)の常識を捨て、Webブラウザ(スマホ)の制約に従うこ�
 
 **目標:** 環境構築と、Reactの「State管理」の理解。
 
-* GitHub連携と `AI_INSTRUCTIONS.md` の設置。
-* **Mission:** Next.js上で、ボタンを押すと数字が増える（2D）、ボタンを押すとCubeの色が変わる（3D）を実装し、「Hooks」を体得する。
+- GitHub連携と `AI_INSTRUCTIONS.md` の設置。
+- **Mission:** Next.js上で、ボタンを押すと数字が増える（2D）、ボタンを押すとCubeの色が変わる（3D）を実装し、「Hooks」を体得する。
 
 ### Phase 2: Unity知識の移植 (2月上旬〜中旬)
 
 **目標:** Blenderで作ったモデルをWebで動かす。
 
-* BlenderでのORMマップ焼き込みとglTF書き出し習得。
-* R3Fでのモデル読み込み (`useGLTF`)。
-* **Mission:** 自作モデルを表示し、HTMLのボタンでアニメーションを再生させる（HTML⇔Canvas間通信の確立）。
+- BlenderでのORMマップ焼き込みとglTF書き出し習得。
+- R3Fでのモデル読み込み (`useGLTF`)。
+- **Mission:** 自作モデルを表示し、HTMLのボタンでアニメーションを再生させる（HTML⇔Canvas間通信の確立）。
 
 ### Phase 3: ポートフォリオ構築 (2月下旬〜3月中旬)
 
 **目標:** 「採用される作品」への仕上げ。
 
-* 作品テーマ決定（例：Webアバタービューワー、3D製品カタログ等）。
-* スマホ対応（レスポンシブデザイン）。
-* パフォーマンスチューニング（Lighthouseスコア改善）。
+- 作品テーマ決定（例：Webアバタービューワー、3D製品カタログ等）。
+- スマホ対応（レスポンシブデザイン）。
+- パフォーマンスチューニング（Lighthouseスコア改善）。
 
 ### Phase 4: 脱獄・就活 (3月下旬〜)
 
 **目標:** 内定獲得。
 
-* Vercelへのデプロイ（公開）。
-* Wantedly / Green / X での売り込み開始。
-* 「VRChatの最適化知識を持つWebGLエンジニア」として面接に挑む。
+- Vercelへのデプロイ（公開）。
+- Wantedly / Green での売り込み開始。
+- 「VRChatの最適化知識を持つWebGLエンジニア」として面接に挑む。
 
 ---
 

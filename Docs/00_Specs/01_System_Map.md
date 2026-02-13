@@ -16,18 +16,18 @@
 ```mermaid
 graph TD
     Root["layout.tsx <br/> (HTML/Font)"] --> Page["page.tsx <br/> (Entry Point)"]
-    
+
     Page --> Layout["ViewerLayout.tsx <br/> (Layer System)"]
-    
+
     subgraph "Layer 2: UI Overlay (Fore)"
         Layout --> InfoPanel["InfoPanel.tsx <br/> (Detail View)"]
         Layout --> Footer["Footer Controls <br/> (Next/Prev)"]
     end
-    
+
     subgraph "Layer 1: 3D Scene (Back)"
         Layout --> ErrorBoundary["Error Boundary <br/> (Safety Net)"]
         ErrorBoundary --> Scene["Scene.tsx <br/> (Canvas Root)"]
-        
+
         Scene --> Suspense["Suspense <br/> (Async Wait)"]
         Suspense --> SmartLoader["SmartLoader.tsx <br/> (Loading UI)"]
         Suspense --> ManualLoader["ManualLoader.tsx <br/> (Logic Core)"]
@@ -36,14 +36,15 @@ graph TD
 
 ### Key Files Overview
 
-| ファイル名 | 分類 | 役割 (Responsibility) |
-| :--- | :--- | :--- |
-| **page.tsx** | Page | アプリの入り口。`Scene` の動的読み込みとエラースイッチ (`ErrorBoundary`) を設置する。 |
-| **ViewerLayout.tsx** | Layout | 画面構成の司令塔。「前面のUI」と「背景の3D」を重ね合わせる (Z-Index管理)。 |
-| **InfoPanel.tsx** | UI | 右上の情報パネル。Storeからデータを受け取り表示する「受信者」。 |
-| **Scene.tsx** | 3D | 3D世界の創造主。照明 (`Lights`) やカメラ、環境設定を行う。 |
-| **ManualLoader.tsx** | 3D/Logic | **最重要ファイル**。GLTFのロード、解析、アニメーション、Storeへのデータ送信を行う「心臓部」。 |
-| **SmartLoader.tsx** | UI | `ManualLoader` が作業中の間だけ表示される待機画面。Anti-Flicker機能付き。 |
+| ファイル名            | 分類     | 役割 (Responsibility)                                                                         |
+| :-------------------- | :------- | :-------------------------------------------------------------------------------------------- |
+| **page.tsx**          | Page     | アプリの入り口。`Scene` の動的読み込みとエラースイッチ (`ErrorBoundary`) を設置する。         |
+| **ViewerLayout.tsx**  | Layout   | 画面構成の司令塔。「前面のUI」と「背景の3D」を重ね合わせる (Z-Index管理)。                    |
+| **InfoPanel.tsx**     | UI       | 右上の情報パネル。Storeからデータを受け取り表示する「受信者」。                               |
+| **Scene.tsx**         | 3D       | 3D世界の創造主。照明 (`Lights`) やカメラ、環境設定を行う。                                    |
+| **ManualLoader.tsx**  | 3D/Logic | **最重要ファイル**。GLTFのロード、解析、アニメーション、Storeへのデータ送信を行う「心臓部」。 |
+| **SmartLoader.tsx**   | UI       | `ManualLoader` が作業中の間だけ表示される待機画面。Anti-Flicker機能付き。                     |
+| **asset-manifest.ts** | Data     | アプリ内の全アセット情報（名前、キャプション等）を定義する「台帳」。Storeの初期値。           |
 
 ---
 
@@ -54,26 +55,22 @@ graph TD
 
 ```mermaid
 sequenceDiagram
-    participant User as User Action
-    participant Viewer as ViewerLayout
-    participant Store as Zustand Store
-    participant Loader as ManualLoader (3D)
-    participant UI as InfoPanel (2D)
+    participant User as User
+    participant Viewer as UI(Button)
+    participant Store as Store(Zustand)
+    participant UI as UI(InfoPanel)
+    participant Loader as 3D(Loader)
 
-    Note over User, Store: 1. User switches model
+    Note over User, Store: 1. Optimistic Update (Instant)
     User->>Viewer: Click [NEXT]
-    Viewer->>Store: setTargetPath("/models/radio.glb")
-    
-    Note over Store, Loader: 2. Loader reacts to change
-    Store->>Loader: Detects targetPath change
-    Loader->>Loader: Load GLB & Extract Metadata
-    
-    Note over Loader, Store: 3. Logic sends Data
-    Loader->>Store: setModel(ArchiveItem)
-    
-    Note over Store, UI: 4. UI updates automatically
-    Store->>UI: Notify Update
-    UI->>UI: Re-render (Show Name, Verts, Quote)
+    Viewer->>Store: goToNext()
+    Store->>Store: Lookup Manifest (Next Item)
+    Store->>UI: Update Info (Immediate!)
+    Store->>Loader: Start Async Loading...
+
+    Note over Store, Loader: 2. Background Process
+    Loader->>Loader: Fetch GLB & Parse
+    Loader->>Store: setModelData(Complete)
 ```
 
 ### State Management (`src/lib/store.ts`)
@@ -82,9 +79,9 @@ sequenceDiagram
 以下の情報をグローバルに保持しています。
 
 1. **`targetPath`:** 今何を表示すべきか？ (Input)
-    - 例: `"/models/radio.glb"`
+   - 例: `"/models/radio.glb"`
 2. **`currentModel`:** 今表示しているものの詳細データ (Output)
-    - 例: `{ name: "Radio", quote: "...", techSpecs: {...} }`
+   - 例: `{ name: "Radio", quote: "...", techSpecs: {...} }`
 3. **`isLoaded`:** ロードが終わっているか？ (Status)
 
 ---
@@ -107,5 +104,6 @@ src/
 │   └── page.tsx          # トップページ (構成定義)
 └── lib/
     ├── store.ts          # データセンター (Zustand)
+    ├── asset-manifest.ts # アセット台帳 (Static Data)
     └── utils.ts          # 便利ツール (Tailwind merge)
 ```

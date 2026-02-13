@@ -11,17 +11,17 @@
 
 ### Cargo List (Defined Assets) 26'02-05時点
 
-| ID | Item Name | Status |
-| :--- | :--- | :--- |
-| **ID-001** | Radio (ラジオ) | Waiting |
-| **ID-002** | Keyboard (キーボード) | Waiting |
-| **ID-003** | Morning Coffee (缶コーヒー) | Waiting |
+| ID         | Item Name                                 | Status  |
+| :--------- | :---------------------------------------- | :------ |
+| **ID-001** | Radio (ラジオ)                            | Waiting |
+| **ID-002** | Keyboard (キーボード)                     | Waiting |
+| **ID-003** | Morning Coffee (缶コーヒー)               | Waiting |
 | **ID-004** | Closet Acoustic Guitar (押し入れのアコギ) | Waiting |
-| **ID-005** | Favorite Mug (お気に入りのマグカップ) | Waiting |
-| **ID-006** | Camera (カメラ) | Waiting |
-| **ID-007** | Game Boy (ゲームボーイ) | Waiting |
-| **ID-008** | Lantern (ランタン) | Waiting |
-| **ID-009** | Family Photo (家族やペットの写真) | Waiting |
+| **ID-005** | Favorite Mug (お気に入りのマグカップ)     | Waiting |
+| **ID-006** | Camera (カメラ)                           | Waiting |
+| **ID-007** | Game Boy (ゲームボーイ)                   | Waiting |
+| **ID-008** | Lantern (ランタン)                        | Waiting |
+| **ID-009** | Family Photo (家族やペットの写真)         | Waiting |
 
 ## 2. 共通仕様と重要な制約 (Common Specs & Critical Constraints)
 
@@ -31,7 +31,10 @@
 
 - **File Format:** `.glb` (glTF Binary)
 - **Scale:** 1.0 = 1 Meter (Real-world scale)
-- **Polycount:** 1モデルあたり **Max 10,000 tris** (推奨: 5,000以下)
+- **Polycount:**
+  - **Hero Asset (Main):** **Max 20,000 tris** (推奨: 15,000程度)
+  - **Environment (Sub):** **Max 5,000 tris**
+  - VRChat環境と異なり、一度に1体しか表示しないため、表現力を優先して高めに設定します。
 - **Texture Size:** **Max 1024x1024** (推奨: 512px)
 - **Maps:** BaseColor, Metallic, Roughness, Normal, Emissive
 - **Shading:** Smooth Shading (Auto Smooth)
@@ -43,6 +46,7 @@
 #### Transparency / Alpha (透明・半透明)
 
 WebGL (Three.js) は「半透明オブジェクトの前後関係（描画順）」の計算が苦手です。
+
 - **問題:** ガラスの向こう側の物体が消えたり、前後が入れ替わって見えたりするアーティファクトが発生しやすい。
 - **対策:**
   - 極力 **「不透明 (Opaque)」** でデザインする。
@@ -52,6 +56,7 @@ WebGL (Three.js) は「半透明オブジェクトの前後関係（描画順）
 #### Emission & Bloom (発光)
 
 BlenderのEevee/Cyclesと異なり、Web上では標準でブルーム（光の溢れ出し）は描画されません。
+
 - **問題:** `Emission` カラーを設定しても、ただ「その色が明るい」だけで、光っているようには見えない。
 - **対策:**
   - **Post-Processing (Bloom) は最終手段:** モバイル負荷が高いため、基本的にはOFFを想定する。
