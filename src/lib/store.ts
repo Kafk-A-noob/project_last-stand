@@ -16,6 +16,7 @@ export type ArchiveItem = {
   // Asset (The Body)
   path: string;   // e.g. "/models/radio.glb"
   camPos?: [number, number, number]; // ベストアングル
+  rotationSpeed?: [number, number, number]; // 自動回転速度 [x, y, z]
 
   // Tech Specs (The Flex)
   techSpecs?: {
@@ -69,8 +70,8 @@ export const useStore = create<AppState>((set) => ({
 
   goToNext: () => {
     // 現在のステート取得
-    set((state) => {
-      // activeなアイテムのみのリストを作る
+      set((state) => {
+        // activeなアイテムのみのリストを作る
       const activeItems = ASSET_MANIFEST.filter((item) => item.active);
       if (activeItems.length === 0) return state;
       //現在のインデックスを探す
