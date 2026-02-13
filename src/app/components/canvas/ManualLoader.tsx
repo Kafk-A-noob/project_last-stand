@@ -1,76 +1,59 @@
 import { useRef, useEffect } from "react";
 import { Group, Object3D, Mesh } from "three";
-import { useLoader, useFrame } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import { useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 import { useStore } from "@/lib/store";
 
 export default function ManualLoader() {
-  // Ref(参照)を作成
   const meshRef = useRef<Group>(null);
-
-  // Storeからターゲットパスを取得
   const targetPath = useStore((state) => state.targetPath);
-  // ロード処理
-  const gltf = useLoader(GLTFLoader, targetPath, (Loader) => {
-    // 1. DracoLoaderのインスタンスを作成
-    const dracoLoader = new DRACOLoader();
-
-    // 2. デコーダーの場所を指定 (public/draco/)
-    dracoLoader.setDecoderPath("/draco/");
-
-    // 3. GLTFLoaderにDracoLoaderを合体
-    Loader.setDRACOLoader(dracoLoader);
-  });
-
+  const currentModel = useStore((state) => state.currentModel);
   const updateModel = useStore((state) => state.setModelData);
 
-  useEffect(() => {
-    if (gltf) {
-      // BlenderのCustom Propertiesは userData に入る
-      const meta = gltf.scene.userData;
+  // useGLTF: 自動でキャッシュ・Draco対応
+  const { scene } = useGLTF(targetPath, "/draco/");
 
-      // 頂点数カウント (簡易版)
+  useEffect(() => {
+    // クローンして使用
+    const clonedScene = scene.clone(true);
+
+    if (clonedScene) {
+      const meta = clonedScene.userData;
       let vertCount = 0;
       let triCount = 0;
 
-      gltf.scene.traverse((obj: Object3D) => {
+      clonedScene.traverse((obj: Object3D) => {
         if ((obj as Mesh).isMesh) {
           const mesh = obj as Mesh;
-          const mat = mesh.material;
-          // 配列チェック + "Main_Body" で始まる名前なら何でもOKに (例: Main_Body_Radio, Main_Body.001)
-          if (!Array.isArray(mat) && mat.name.startsWith("Main_Body")) {
-            console.log("Target Material Detected:", mat.name);
-            // Future: mat.color.setHex(0xff0000);
-          }
           vertCount += mesh.geometry.attributes.position.count;
           triCount += mesh.geometry.index ? mesh.geometry.index.count / 3 : 0;
         }
       });
 
-      // ストアに保存
       updateModel({
         techSpecs: {
           vertices: vertCount,
           triangles: triCount,
-          compression: "Draco",
-        }
+          compression: "Draco (Auto)",
+        },
       });
     }
-  }, [gltf, updateModel]);
+  }, [scene, updateModel]);
 
-  // Load完了後のデータ構造を確認するためのログ
-  console.log("Loaded GLTF:", gltf);
+  // Load完了ログ
+  console.log("Loaded Scene via useGLTF:", scene);
 
-  // フレーム毎の更新処理
   useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += delta * 2;
-      meshRef.current.rotation.y += delta * 3;
-      meshRef.current.rotation.z += delta * 1;
+    // 個別の回転速度が定義されている場合のみ回転させる
+    const speed = currentModel?.rotationSpeed;
+    if (meshRef.current && speed) {
+      meshRef.current.rotation.x += delta * speed[0];
+      meshRef.current.rotation.y += delta * speed[1];
+      meshRef.current.rotation.z += delta * speed[2];
     }
   });
 
-  // 3D空間に表示
-  return <primitive object={gltf.scene} ref={meshRef} />;
+  // クローンして描画 + dispose={null}
+  // ここで clone(true) しないとキャッシュ本体が使われてしまい、Context Lostの原因になる
+  return <primitive object={scene.clone(true)} ref={meshRef} dispose={null} />;
 }

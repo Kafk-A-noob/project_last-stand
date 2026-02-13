@@ -126,34 +126,36 @@ export default function Scene() {
 その場合は、**あえてインラインスタイル** を使って確実に表示させてください。
 
 
-```tsx
-<ErrorBoundary
-  resetKeys={[targetPath]}
-  fallbackRender={({ error }) => (
-    <Html center>
-      <div style={{
-        color: 'red',
-        background: 'rgba(0,0,0,0.8)',
-        padding: '10px',
-        border: '1px solid red',
-        borderRadius: '4px',
-        whiteSpace: 'nowrap'
-      }}>
-        <h3>SYSTEM ERROR</h3>
-        <p>Failed to load model.</p>
-        <p style={{ fontSize: '10px', marginTop: '4px' }}>
-          {error.message}
-        </p>
-      </div>
-    </Html>
-  )}
->
-  <ManualLoader />
-</ErrorBoundary>
+
+
+  {/* ↓ fallbackRenderでエラー内容を表示 */}
+  <ErrorBoundary
+    resetKeys={[targetPath]}
+    fallbackRender={({ error }: { error: any }) => (
+      <Html center>
+        <div style={{
+          color: 'red',
+          background: 'rgba(0,0,0,0.8)',
+          padding: '10px',
+          border: '1px solid red',
+          borderRadius: '4px',
+          fontFamily: 'monospace',
+          whiteSpace: 'pre-wrap',
+          maxWidth: '300px'
+        }}>
+          <h3>SYSTEM ERROR</h3>
+          <p style={{ fontSize: '10px', marginTop: '4px' }}>
+            {error.message}
+          </p>
+        </div>
+      </Html>
+    )}
+  >
+    <ManualLoader />
+  </ErrorBoundary>
 ```
 
-※ `fallback` の代わりに `fallbackRender` を使うことで、具体的なエラー内容 (`error.message`) を表示できます。
-これにより、「ファイルが見つからない」のか「データが壊れている」のかを特定できます。
+これで画面中央に具体的なエラーメッセージ（例: `Unexpected token` や `404 Not Found`）が表示されます。その内容を教えてください。
 
 ### `src/app/components/canvas/ViewCanvas.tsx`
 

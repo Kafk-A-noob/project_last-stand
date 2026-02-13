@@ -96,7 +96,9 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
             <div className={cn("flex gap-4")}>
               {/* [ < ] Prev Button */}
               <button
-                onClick={goToPrev}
+                onClick={() => {
+                  goToPrev();
+                }}
                 className={cn(
                   "px-4 py-2 text-xs border-white/10 rounded",
                   "hover:bg-cyan-500/20 hover:border-cyan-500/50",
@@ -118,7 +120,9 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
 
               {/* [ > ] Next Button */}
               <button
-                onClick={goToNext}
+                onClick={() => {
+                  goToNext();
+                }}
                 className={cn(
                   "px-4 py-2 text-xs border-white/10 rounded",
                   "hover:bg-cyan-500/20 hover:border-cyan-500/50",

@@ -11,35 +11,35 @@ import SmartLoader from "../ui/SmartLoader";
 
 export default function Scene() {
   const targetPath = useStore((state) => state.targetPath);
+  // ロード完了フラグを取得
+  const isLoaded = useStore((state) => state.isLoaded);
   return (
     <Canvas>
       {/* Unity: Directional Light */}
       <ambientLight intensity={1.0} />
       <directionalLight position={[5, 10, 5]} intensity={1} />
 
-      {/* モデル読み込み (Suspense: 非同期処理の基本作法) */}
       <Suspense fallback={<SmartLoader />}>
-
-      {/* ↓ ここでエラーを捕まえる */}
-      <ErrorBoundary
-      resetKeys={[targetPath]}
-        fallback={
-          <div
-            className={cn(
-              "absolute top-1/2 left-1/2",
-              "transform -translate-x-1/2 -translate-y-1/2",
-              "text-red-500 font-mono text-xs bg-black/80 p-4",
-              "border border-red-500 rounded pointer-events-none",
-            )}
-          >
-            WARNING: VISUAL MODULE OFFLINE. <br />
-            (Model data not found or corrupted)
-          </div>
-        }
-      >
-      {/* 以前のCube・ReactLogoは.mdで除外 */}
-        <ManualLoader />
-      </ErrorBoundary>
+        <ErrorBoundary
+          resetKeys={[targetPath]}
+          fallbackRender={({ error }: { error: any }) => (
+            <Html center>
+              <div
+                className={cn(
+                  "bg-black/80 p-4 border border-red-500 rounded",
+                  "text-red-500 font-mono text-xs text-center pointer-events-none",
+                  "whitespace-pre-wrap max-w-[300px]",
+                )}
+              >
+                WARNING: VISUAL MODULE OFFLINE. <br />
+                (Model data not found or corrupted)
+                <p className="mt-2 opacity-50 text-[10px]">{error.message}</p>
+              </div>
+            </Html>
+          )}
+        >
+          <ManualLoader />
+        </ErrorBoundary>
       </Suspense>
 
       {/* カメラ操作 */}
@@ -48,7 +48,7 @@ export default function Scene() {
       これで「モデルが画面外に行ってしまう」事故を防ぎ、
       常にモデルを中心に回転するように強制。
       */}
-      <OrbitControls makeDefault enablePan={false} />
+      {isLoaded && <OrbitControls makeDefault enablePan={false} />}
     </Canvas>
   );
 }

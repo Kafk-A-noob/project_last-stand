@@ -12,6 +12,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     active: true, // Modeling Party Target: ON
     name: "React_Logo",
     path: "/models/React_Logo.glb", // Placeholder: React Logo
+    rotationSpeed: [2, 3, 1], // 個別の回転速度定義
     quote: "仮置き",
     description: "このシステムの心臓部。",
     contributor: "KafkA＿",
