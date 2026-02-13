@@ -46,3 +46,6 @@ next-env.d.ts
 *.draco
 public/models/*
 .env*.local
+
+# Folder
+Docs/01_Job_Hunting
