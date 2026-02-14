@@ -67,7 +67,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
                 "pb-2 inline-block",
               )}
             >
-              PROJECT:LAST STAND
+              PROJECT: <br className="md:hidden" />LAST STAND
             </h1>
             <p className={cn("mt-2 text-xs md:text-sm text-cyan-500/80")}>
               {"// TERMINAL_ACCESS: GRANTED"} <br /> {"// USER: KafkA"}
@@ -77,7 +77,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
 
         {/* --- INFO PANEL LAYER (Absolute) --- */}
         {/* z-20: Header(z-10)より手前。pointer-events-autoでクリック可能 */}
-        <div className={cn("absolute top-20 right-6 z-20",
+        <div className={cn("absolute top-32 right-6 z-20",
         "md:top-24 md:right-12 pointer-events-auto")}>
         <InfoPanel />
         </div>
