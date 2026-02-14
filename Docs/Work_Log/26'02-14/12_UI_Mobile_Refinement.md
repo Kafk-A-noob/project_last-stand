@@ -2,9 +2,9 @@
 
 **Date:** 2026-02-14
 **Target:** InfoPanel.tsx, ViewerLayout.tsx
-**Goal:** モバイルでの情報過多を防ぐための「折りたたみ機能」実装と、フッターの見た目調整。
+**Goal:** モバイルでの情報過多を防ぐための「折りたたみ機能」実装と、タイトル・フッターの表示位置調整。
 
-## 1. InfoPanel の折りたたみ (Mobile Only)
+## 1. InfoPanel の折りたたみ (Part 1)
 
 スマホでは `Name` と `Quote` のみを表示し、タップすると詳細 (`Tech Specs`, `Description`, `Contributor`) が展開されるようにします。
 **PCでは常に全て表示されます。**
@@ -16,8 +16,7 @@
 ```tsx
 // 1. useState を追加
 import { useState } from "react";
-import { useStore } from "@/lib/store";
-import { cn } from "@/lib/utils";
+// ...
 
 export default function InfoPanel() {
   const { currentModel } = useStore();
@@ -37,66 +36,34 @@ export default function InfoPanel() {
         "select-none" // テキスト選択防止
       )}
     >
-      {/* --- Always Visible (常時表示) --- */}
-      <h2 className="text-lg font-bold mb-1 text-white flex justify-between items-center">
+      {/* ... (省略) Name/Quote ... */}
+      <h2 className={cn("text-lg font-bold mb-1 text-white flex justify-between items-center")}>
         {currentModel.name}
         {/* Mobile用の開閉アイコン (PCでは非表示) */}
         <span className={cn("text-xs md:hidden transform transition-transform", isOpen ? "rotate-180" : "")}>
           ▼
         </span>
       </h2>
-      <div className="text-xs text-gray-400 mb-0 italic">
-        &quot;{currentModel.quote}&quot;
-      </div>
 
-      {/* --- Collapsible Content (詳細情報) --- */}
-      {/* md:max-h-none md:opacity-100: PCでは常に表示 */}
-      {/* max-h-0 opacity-0: スマホ初期状態は非表示 */}
+      {/* 4. 詳細部分を囲むdiv (クラスで制御) */}
       <div
         className={cn(
           "overflow-hidden transition-all duration-300 ease-in-out",
           isOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0 md:max-h-[500px] md:opacity-100 md:mt-4"
         )}
       >
-        {/* Tech Spec Section */}
-        {currentModel.techSpecs && (
-          <div
-            className={cn(
-              "space-y-1 mb-4 text-xs font-bold border-l-2",
-              "border-cyan-500/50 pl-2 text-cyan-400",
-            )}
-          >
-            <p>VERT: {currentModel.techSpecs.vertices.toLocaleString()}</p>
-            <p>TRIS: {currentModel.techSpecs.triangles.toLocaleString()}</p>
-            <p>COMP: {currentModel.techSpecs.compression}</p>
-          </div>
-        )}
-
-        {/* Description Section */}
-        <p
-          className={cn(
-            "pt-4 border-t border-cyan-500/30",
-            "text-xs text-gray-300 leading-relaxed",
-          )}
-        >
-          {currentModel.description}
-        </p>
-        <div className="mt-2 text-[10px] text-right text-gray-500">
-          Provided by {currentModel.contributor}
-        </div>
+          {/* Tech Spec, Description 等はこの中に入れる */}
       </div>
     </div>
   );
 }
 ```
 
-## 2. Footer 文字位置調整
+## 2. Footer 文字位置調整 (Part 1)
 
-フッターのモデル名 (`currentModel.name`) が少し上に寄って見えるため、中央揃えを強化します。
+フッターのモデル名 (`currentModel.name`) が少し上に寄って見えないよう、中央揃えを強化します。
 
 ### `src/app/components/layout/ViewerLayout.tsx`
-
-フッター内の該当箇所（117行目付近）に `flex items-center justify-center pt-1` クラスを追加して微調整します。
 
 ```tsx
               {/* [ Label ] Current Item Name */}
@@ -106,7 +73,42 @@ export default function InfoPanel() {
                   "flex items-center justify-center pt-0.5" // [Modified] 中央揃えと微調整
                 )}
               >
-                {/* モデルがロードされるまでは Loading... と表示 */}
-                {currentModel ? currentModel.name : "LOADING..."}
-              </div>
+```
+
+---
+
+## 3. Title & Panel Absolute Layout Adjustment (Part 2)
+
+スマホ画面でタイトルが横に長すぎるとパネルと重なるため、**「タイトルを改行」** し、**「パネル位置を下げる」** ことでスペースを確保します。
+
+### `src/app/components/layout/ViewerLayout.tsx`
+
+#### A. タイトルの改行
+
+`PROJECT:` と `LAST STAND` の間に `<br />` を入れ、スマホ (`md:hidden`) だけで改行させます。
+
+```tsx
+            <h1
+              className={cn(
+                "text-2xl md:text-4xl font-bold",
+                "tracking-widest border-b-2 border-cyan-500",
+                "pb-2 inline-block",
+              )}
+            >
+              PROJECT: <br className="md:hidden" /> LAST STAND
+            </h1>
+```
+
+#### B. パネル位置の調整
+
+詳細パネルの開始位置 `top-20` (80px) を `top-32` (128px) に変更し、タイトルの下に来るようにします。PC (`md:top-24`) はそのまま維持します。
+
+```tsx
+        {/* --- INFO PANEL LAYER (Absolute) --- */}
+        {/* z-20: Header(z-10)より手前。pointer-events-autoでクリック可能 */}
+        {/* [Modified] top-20 -> top-32 (スマホでの位置を下げる) */}
+        <div className={cn("absolute top-32 right-6 z-20",
+        "md:top-24 md:right-12 pointer-events-auto")}>
+        <InfoPanel />
+        </div>
 ```
