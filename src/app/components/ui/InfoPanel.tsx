@@ -19,14 +19,20 @@ export default function InfoPanel() {
       <div className="text-xs text-gray-400 mb-4 italic">
         &quot;{currentModel.quote}&quot;
       </div>
-      {/* Tech Spec Section */} {/* 一時的に非表示 */}
-      {/*
-      <div className="space-y-1 mb-4 text-xs font-bold border-l-2 border-gray-700 pl-2">
-        <p>VERT: {currentModel.techSpecs.vertices.toLocaleString()}</p>
-        <p>TRIS: {currentModel.techSpecs.triangles.toLocaleString()}</p>
-        <p>COMP: {currentModel.techSpecs.compression}</p>
-      </div>
-      */}
+      {/* Tech Spec Section */}
+
+      {currentModel.techSpecs && (
+        <div
+          className={cn(
+            "space-y-1 mb-4 text-xs font-bold border-l-2",
+            "border-cyan-500/50 pl-2 text-cyan-400",
+          )}
+        >
+          <p>VERT: {currentModel.techSpecs.vertices.toLocaleString()}</p>
+          <p>TRIS: {currentModel.techSpecs.triangles.toLocaleString()}</p>
+          <p>COMP: {currentModel.techSpecs.compression}</p>
+        </div>
+      )}
       {/* Description Section */}
       <p
         className={cn(
