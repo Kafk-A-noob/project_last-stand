@@ -117,6 +117,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
               <div
                 className={cn(
                   "text-xs text-cyan-200 font-bold min-w-[100px] text-center",
+                  "flex items-center justify-center pt-0.5"
                 )}
               >
                 {/* モデルがロードされるまでは Loading... と表示 */}
