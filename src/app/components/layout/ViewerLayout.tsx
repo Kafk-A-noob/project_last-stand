@@ -73,9 +73,14 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
               {"// TERMINAL_ACCESS: GRANTED"} <br /> {"// USER: KafkA"}
             </p>
           </div>
-          {/* 右側: 情報パネル */}
-          <InfoPanel />
         </header>
+
+        {/* --- INFO PANEL LAYER (Absolute) --- */}
+        {/* z-20: Header(z-10)より手前。pointer-events-autoでクリック可能 */}
+        <div className={cn("absolute top-20 right-6 z-20",
+        "md:top-24 md:right-12 pointer-events-auto")}>
+        <InfoPanel />
+        </div>
 
         {/* --- FOOTER --- */}
         {/* pointer-events-auto: ボタン等があるため判定を復活 */}

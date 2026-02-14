@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export default function InfoPanel() {
   const { currentModel, isLoaded } = useStore();
 
-  if (!isLoaded || !currentModel) return null; // データが無ければ何も表示しない
+  if (!currentModel) return null; // データが無ければ何も表示しない
 
   return (
     <div
