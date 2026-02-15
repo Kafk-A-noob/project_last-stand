@@ -11,7 +11,11 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "item-000-React_Logo",
     active: true, // Modeling Party Target: ON
     name: "React_Logo",
-    path: "/models/React_Logo.glb", // Placeholder: React Logo
+    path: "/models/00_React_Logo.glb", // Placeholder: React Logo
+    // 初期値として記述
+    techSpecs: {
+      fileSize: "0.0752 MB", // 容量は手動で書く
+    },
     rotationSpeed: [2, 3, 1], // 個別の回転速度定義
     quote: "仮置き",
     description: "このシステムの心臓部。",
@@ -21,7 +25,13 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "item-001-radio",
     active: true, // Modeling Party Target: ON
     name: "Radio",
-    path: "/models/radio.glb", // Placeholder: 
+    path: "/models/01_radio.glb", // Placeholder: 
+    techSpecs: {
+      fileSize: "0.983 MB", // 容量
+    },
+    rotationSpeed: [0,-0.5,0],
+    scale: [5,5,5],
+    position: [0,-1.5,0],
     quote: "最期まで日常らしい時間を感じたいから。",
     description: "いつもの時間、いつものチャンネル。",
     contributor: "Nana",
@@ -31,7 +41,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "item-002-piano",
     active: false, // まだモデルがないので false
     name: "Piano",
-    path: "/models/piano.glb",
+    path: "/models/02_piano.glb",
     quote: "人間たちに音楽があったことを、知ってもらえるから。",
     description: "私にとって唯一の、絶対に裏切らない友人として。そして、いつかこれを拾うかもしれない人類ではない誰かが、音を楽しんでくれることを願って。",
     contributor: "Yuduki",

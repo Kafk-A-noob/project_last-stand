@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Html } from "@react-three/drei";
+import { OrbitControls, Html, Environment } from "@react-three/drei";
 import { ErrorBoundary } from "react-error-boundary";
 import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,10 @@ export default function Scene() {
       {/* Unity: Directional Light */}
       <ambientLight intensity={1.0} />
       <directionalLight position={[5, 10, 5]} intensity={1} />
+
+      {/* 2. 環境マップの追加 (AmbientLightの下あたり) */}
+      {/* cityプリセットを使い、background={false} で背景自体は非表示にする */}
+      <Environment preset="city" background={false} />
 
       <Suspense fallback={<SmartLoader />}>
         <ErrorBoundary
