@@ -61,9 +61,12 @@ export default function InfoPanel() {
               "border-cyan-500/50 pl-2 text-cyan-400",
             )}
           >
-            <p>VERT: {currentModel.techSpecs.vertices.toLocaleString()}</p>
-            <p>TRIS: {currentModel.techSpecs.triangles.toLocaleString()}</p>
-            <p>COMP: {currentModel.techSpecs.compression}</p>
+            <p>VERT: {currentModel.techSpecs.vertices?.toLocaleString()}</p>
+            <p>TRIS: {currentModel.techSpecs.triangles?.toLocaleString()}</p>
+            <p>COMP: {currentModel.techSpecs.compression ?? "-"}</p>
+            {currentModel.techSpecs.fileSize && (
+              <p>SIZE: {currentModel.techSpecs.fileSize}</p>
+            )}
           </div>
         )}
         {/* Description Section */}

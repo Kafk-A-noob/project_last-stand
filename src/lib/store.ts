@@ -18,11 +18,16 @@ export type ArchiveItem = {
   camPos?: [number, number, number]; // ベストアングル
   rotationSpeed?: [number, number, number]; // 自動回転速度 [x, y, z]
 
+  // 個別のトランスフォーム設定
+  scale?: [number, number, number];    // 例: [2, 2, 2]
+  position?: [number, number, number]; // 例: [0, -1, 0]
+
   // Tech Specs (The Flex)
   techSpecs?: {
-    vertices: number;
-    triangles: number;
-    compression: string; // "Draco" or "None"
+    vertices?: number;
+    triangles?: number;
+    compression?: string; // "Draco" or "None"
+    fileSize?: string;
   };
 };
 

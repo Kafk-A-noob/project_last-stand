@@ -1,51 +1,44 @@
 # 現在の状況 (Current Status)
 
-最終更新日: 2026-02-13
+最終更新日: 2026-02-16
 ステータス: **Phase 5.1: QA & Hotfix (Complete)**
 **TRAINING MODE: [ON]**
 
 ## 今日の成果 (Today's Achievements)
 
-1. **Crash Fix (Critical):** `THREE.WebGLRenderer: Context Lost` 問題を解決。
-    - 原因: `OrbitControls` のアンマウント時の競合。
-    - 対策: 条件付きレンダリング (`{isLoaded && <OrbitControls />}`) を実装。
-2. **Code Cleanup:** `ManualLoader` を `useGLTF` ベースの設計に刷新し、古いガード処理を削除。
-3. **Feature:** 回転ロジックの共通化をやめ、`asset-manifest` に `rotationSpeed` を実装。モデルごとの回転制御を可能にした。
-4. **Documentation:** `Docs/02_Technical` に技術レポート (`ContextLostFix`, `OrbitControls_Risk`) を追加。
+1. **Radio Model Integration:**
+    - `ManualLoader` を拡張し、Radioモデル (ID-001) の個別Transform設定（Scale: 3, Pos: -1.0）とファイルサイズ表示を実装。
+2. **Mobile Layout Fix:**
+    - iPhone/Safariでのアドレスバー競合問題を `dvh` 単位導入で解決。
+3. **Critical Fix:**
+    - `ManualLoader` の無限ループバグ（`useEffect` 依存関係）と、`InfoPanel` のクラッシュ（Optional型対応）を修正。
+4. **Tech Debt:**
+    - ファイルサイズ自動取得 (`fetch`) を廃止し、マニフェスト手動入力方式へ切り替え（信頼性向上）。
 
 ## 次回作業への引き継ぎ (Handoff Note)
 
-システムの致命的なバグは修正されました。次はコンテンツ（モデル）の制作と本番デプロイです。
+システムは安定しており、Radioモデルの実装基盤は完了しました。
+残るは「モデルデータの差し替え（テクスチャ焼き込み済み各ファイルの上書き）」です。
 
 ### Critical Action (Next Session)
 
-**Mission: Deployment & Content Production**
+## **Mission: Content Production**
 
-1. **Deployment (High Priority):**
-    - 本日の修正（Context Lost対策）をGitHubへプッシュし、Vercelでデプロイを確認する。
-    - ※ローカルでのみ修正確認済みのため、本番環境での検証が必須。
+1. **Blender Work (User Task):**
+    - `01_radio.glb` のテクスチャ焼き込みを行う。
+    - `public/models/01_radio.glb` を上書き保存する。
+    - ※Web側の設定は完了しているため、ファイル更新だけで反映されます。
 
-2. **Content Production (High Priority):**
-    - `Radio` モデルの制作を行う。
-    - 目安: 15,000 Tris程度 / Draco圧縮推奨。
-    - 配置: `public/models/radio.glb`
-    - 優先度高: `ID-001 Radio`, `ID-002 Keyboard`
-    - 優先度低: `ID-003 Monitor`, `ID-004 Mouse`
-    - **Optimization:** 作成したモデルの軽量化と、Lighthouseスコアの計測・改善。
-
-### Guidelines
-
-1. **Quality over Quantity:** 「ポートフォリオ映え」するクオリティを優先する (Max 20k tris)。
-2. **Strict Review:** 作成したモデルは必ず `ManualLoader` で表示確認し、エクスポート設定ミス（座標ズレ等）がないかチェックすること。
-3. **Safety First:** もし再び WebGL Crash が起きたら、まず `OrbitControls` を疑うこと（今日の教訓）。
-4. **Rotation:** 新しいモデルを追加する際は、`asset-manifest.ts` の `rotationSpeed` で回転速度を調整する（未設定なら回転しない）。
+2. **Verification:**
+    - 本番ビルド (`npm run build && npm start`) での動作確認。
+    - スマホ実機での表示最終チェック。
 
 ### Status
 
-- **CI/CD:** PENDING (Needs Push).
-- **Vercel:** Broken (Needs Redeploy).
-- **Codebase:** **Stable** (Hotfixed).
-- **Assets:** **INCOMPLETE** (Needs active models).
+- **CI/CD:** Green (Built Successfully).
+- **Vercel:** Needs Update (Manual Deploy pending).
+- **Codebase:** **Stable**.
+- **Assets:** **Ready for Textures**.
 - **Performance:** **Stable**.
 
 ---
@@ -57,8 +50,8 @@
 ```plain text
 Docs/
 ├── 00_Specs/        # 仕様書
-├── 01_Logs/         # 作業ログ ("Work_Log")
-├── 02_Technical/    # 技術レポート ("Tech_Report", "Implementation_Intent")
+├── 01_Logs/         # 作業ログ ("00_Work_Log" / "01_Sync_Log")
+├── 02_Technical/    # 技術レポート ("Tech_Report" / "Tech_Note")
 ├── 03_Manual/       # マニュアル
 └── ...
 ```

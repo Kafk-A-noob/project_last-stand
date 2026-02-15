@@ -3,12 +3,15 @@ import { Group, Object3D, Mesh } from "three";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { useStore } from "@/lib/store";
+import { ASSET_MANIFEST } from "@/config/asset-manifest";
 
 export default function ManualLoader() {
   const meshRef = useRef<Group>(null);
   const targetPath = useStore((state) => state.targetPath);
   const currentModel = useStore((state) => state.currentModel);
   const updateModel = useStore((state) => state.setModelData);
+  const scale = currentModel?.scale || [1, 1, 1];
+  const position = currentModel?.position || [0, 0, 0];
 
   // useGLTF: 自動でキャッシュ・Draco対応
   const { scene } = useGLTF(targetPath, "/draco/");
@@ -30,15 +33,25 @@ export default function ManualLoader() {
         }
       });
 
+      /* ファイルサイズ取得 (Manifestから直接)
+        StoreのcurrentModelは更新頻度が高いため、依存配列に入れるとループする。
+        代わりに静的なManifestから探すことでループを防ぐ。
+      */
+      const manifestItem = ASSET_MANIFEST.find(
+        (item) => item.path === targetPath,
+      );
+      const staticFileSize = manifestItem?.techSpecs?.fileSize;
+
       updateModel({
         techSpecs: {
           vertices: vertCount,
           triangles: triCount,
           compression: "Draco (Auto)",
+          fileSize: staticFileSize,
         },
       });
     }
-  }, [scene, updateModel]);
+  }, [scene, targetPath, updateModel]);
 
   // Load完了ログ
   console.log("Loaded Scene via useGLTF:", scene);
@@ -55,5 +68,13 @@ export default function ManualLoader() {
 
   // クローンして描画 + dispose={null}
   // ここで clone(true) しないとキャッシュ本体が使われてしまい、Context Lostの原因になる
-  return <primitive object={scene.clone(true)} ref={meshRef} dispose={null} />;
+  return (
+    <primitive
+      object={scene.clone(true)}
+      ref={meshRef}
+      dispose={null}
+      scale={scale}
+      position={position}
+    />
+  );
 }

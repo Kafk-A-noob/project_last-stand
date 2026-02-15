@@ -41,10 +41,10 @@ yarn-error.log*
 next-env.d.ts
 
 # 3D Assets (Secure massive files)
-*.glb
+# *.glb
 *.gltf
 *.draco
-public/models/*
+# public/models/*
 .env*.local
 
 # Folder

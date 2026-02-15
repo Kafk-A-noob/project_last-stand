@@ -32,7 +32,7 @@ export default function ViewerLayout({ children }: ViewerLayoutProps) {
     // overflow-hidden: 画面外へのはみ出しカット
     <div
       className={cn(
-        "relative w-full h-screen bg-black",
+        "relative w-full h-dvh bg-black",
         "text-white font-mono",
       )}
     >
