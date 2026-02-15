@@ -20,7 +20,7 @@ describe('useStore (Navigation Logic)', () => {
     const { result } = renderHook(() => useStore());
 
     // 1つ目はReact Logo (active: true)
-    expect(result.current.targetPath).toBe('/models/React_Logo.glb');
+    expect(result.current.targetPath).toBe('/models/00_React_Logo.glb');
 
     // Next Action
     act(() => {
@@ -28,7 +28,7 @@ describe('useStore (Navigation Logic)', () => {
     });
 
     // 2つ目はRadio (active: true) なので、Radioになるはず
-    expect(result.current.targetPath).toBe('/models/radio.glb');
+    expect(result.current.targetPath).toBe('/models/01_radio.glb');
   });
   it('goToNext should loop to the end', () => {
     const { result } = renderHook(() => useStore());
@@ -42,7 +42,7 @@ describe('useStore (Navigation Logic)', () => {
     act(() => {
       result.current.goToNext();
     });
-      expect(result.current.targetPath).toBe('/models/radio.glb');
+      expect(result.current.targetPath).toBe('/models/01_radio.glb');
 
       // 次へ（ループ）
       act(() => {
@@ -50,7 +50,7 @@ describe('useStore (Navigation Logic)', () => {
       });
 
       // 最初のアイテムに戻るはず
-      expect(result.current.targetPath).toBe('/models/React_Logo.glb');
+      expect(result.current.targetPath).toBe('/models/00_React_Logo.glb');
   });
     it('goToPrev should loop to the end', () => {
       const { result } = renderHook(() => useStore());
@@ -59,6 +59,6 @@ describe('useStore (Navigation Logic)', () => {
       act(() => {
         result.current.goToPrev();
       });
-      expect(result.current.targetPath).toBe('/models/radio.glb');
+      expect(result.current.targetPath).toBe('/models/01_radio.glb');
     });
 });
