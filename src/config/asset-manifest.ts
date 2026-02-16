@@ -10,7 +10,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   {
     id: "item-000-React_Logo",
     active: true, // Modeling Party Target: ON
-    name: "React_Logo",
+    name: "00_React_Logo",
     path: "/models/00_React_Logo.glb", // Placeholder: React Logo
     // 初期値として記述
     techSpecs: {
@@ -24,14 +24,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   {
     id: "item-001-radio",
     active: true, // Modeling Party Target: ON
-    name: "Radio",
+    name: "01_Radio",
     path: "/models/01_radio.glb", // Placeholder: 
     techSpecs: {
       fileSize: "0.983 MB", // 容量
     },
     rotationSpeed: [0,-0.5,0],
     scale: [5,5,5],
-    position: [0,-1.5,0],
+    position: [0,-1.2,0],
     quote: "最期まで日常らしい時間を感じたいから。",
     description: "いつもの時間、いつものチャンネル。",
     contributor: "Nana",
@@ -40,8 +40,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-002-piano",
     active: false, // まだモデルがないので false
-    name: "Piano",
+    name: "02_Piano",
     path: "/models/02_piano.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "人間たちに音楽があったことを、知ってもらえるから。",
     description: "私にとって唯一の、絶対に裏切らない友人として。そして、いつかこれを拾うかもしれない人類ではない誰かが、音を楽しんでくれることを願って。",
     contributor: "Yuduki",
@@ -50,8 +56,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-003-can_coffee",
     active: false, // まだモデルがないので false
-    name: "缶コーヒー",
+    name: "03_Can_Coffee",
     path: "/models/can_coffee.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "一日の始まりの一杯",
     description: "毎朝飲んでいたショート缶。",
     contributor: "Anonymous",
@@ -60,8 +72,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-004-acoustic_guitar",
     active: false, // まだモデルがないので false
-    name: "アコースティックギター",
+    name: "04_Acoustic_Guitar",
     path: "/models/acoustic_guitar.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "外に出せなかった憧れを、こんな時ぐらいは出してもいいんじゃないでしょうか",
     description: "ずっと弾けずにしまってあったギター。",
     contributor: "Aya",
@@ -70,8 +88,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-005-favorite_mug",
     active: false, // まだモデルがないので false
-    name: "お気に入りのマグカップ",
+    name: "05_Favorite_Mug",
     path: "/models/favorite_mug.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "世界が終わっても喉は乾くし腹は減るから",
     description: "最後の一杯",
     contributor: "Anonymous",
@@ -80,8 +104,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-006-Camera",
     active: false, // まだモデルがないので false
-    name: "Camera",
+    name: "06_Camera",
     path: "/models/camera.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "今まで撮ってきた景色を見ながら最後を迎えたいから",
     description: "いつかの景色を、いつまでも",
     contributor: "クエリ伍長",
@@ -90,8 +120,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-007-Game_Boy",
     active: false, // まだモデルがないので false
-    name: "Game Boy",
+    name: "07_Game_Boy",
     path: "/models/game_boy.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "一人でも暇つぶしできるから",
     description: "最後の相棒",
     contributor: "わし",
@@ -100,8 +136,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-008-Lantern",
     active: false, // まだモデルがないので false
-    name: "Lantern",
+    name: "08_Lantern",
     path: "/models/lantern.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "最後を迎えるなら明るいほうがいいから",
     description: "最後の灯火",
     contributor: "葉月ひさめ",
@@ -110,8 +152,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "item-009-Family_Photo",
     active: false, // まだモデルがないので false
-    name: "Family Photo",
+    name: "09_Family_Photo",
     path: "/models/family_photo.glb",
+    techSpecs: {
+      fileSize: "TBD",
+    },
+    rotationSpeed: [0,0,0],
+    scale: [1,1,1],
+    position: [0,0,0],
     quote: "",
     description: "",
     contributor: "ひるねこ",
