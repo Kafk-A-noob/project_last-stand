@@ -1,3 +1,63 @@
+# 作業ログ: Final Polish & Packaging
+
+**日付:** 2026-02-17
+**Status:** In Progress
+**Type:** Polish / Documentation
+
+## 1. 目的
+
+Phase 5.2 の仕上げとして、プロジェクトの完成度を高める微調整（Polish）を行う。
+「神は細部に宿る」の精神で、メタデータや細部の表示を整える。
+
+## 2. 実装手順 (Manual Execution)
+
+以下の3つのファイルを編集してください。
+
+### A. InfoPanel.tsx (ID表示)
+
+詳細パネルにも「管理ID」を表示し、アーカイブ感を演出します。
+
+- **File:** `src/app/components/ui/InfoPanel.tsx`
+
+```tsx
+// [Change] h2タグの直後に ID を追加
+// ...
+<h2 className="...">
+  {currentModel.name}
+  {/* ... (Mobile Icon) ... */}
+</h2>
+
+{/* [New] ID Display */}
+<div className="text-[10px] text-cyan-500/70 font-mono mb-2 tracking-widest">
+  {currentModel.id.toUpperCase()}
+</div>
+
+<div className="text-xs text-gray-400 mb-4 italic">
+// ...
+```
+
+### B. layout.tsx (SEO/Browser Tab)
+
+ブラウザのタブに表示されるタイトルを、より製品らしくします。
+
+- **File:** `src/app/layout.tsx`
+
+```tsx
+export const metadata: Metadata = {
+  // [Change] タイトルを少しリッチに
+  title: "PROJECT: LAST STAND | The Digital Ark",
+  description: "Web3D Portfolio featuring React Three Fiber and Next.js.",
+};
+```
+
+### C. README.md (Feature List)
+
+GitHubのトップページに、今回実装した技術的成果をアピールします。
+**（リクエスト通り、日本企業向けに日本語化します）**
+
+- **File:** `README.md`
+
+````markdown
 # Project Last-Stand: The Digital Ark
 
 > "We capture the soul of the end times."
@@ -41,17 +101,6 @@ Unity/VRChatの体験をモダンWebスタンダードで再構築し、**Optimi
 - **[Development Logs](Docs/02_Logs/): Folder**
   日々の開発履歴と意思決定のプロセス。
 
-## Quick Start
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-# Open http://localhost:3000
-```
-
 ## Project Structure
 
 ```plaintext
@@ -60,12 +109,20 @@ src/
 │   ├── components/
 │   │   ├── canvas/    # 3D Logic (R3F)
 │   │   ├── ui/        # 2D Overlay UI
-│   │   └── layout/    # Composition Layer
-│   └── (pages)/       # Next.js Routes
-├── lib/               # Utilities & Stores
-└── public/            # Static Assets
+// ... (そのままでOK)
+```
+````
+
+## Quick Start
+
+```bash
+npm install
+npm run dev
+# Open http://localhost:3000
 ```
 
 ---
 
 _Created by KafkA (25R1116 = Kafk-A-noob) | Powered by Next.js & R3F_
+
+この「ハイブリッド形式」なら、英語圏のツールっぽさを出しつつ、しっかりと日本企業にアピールできます。

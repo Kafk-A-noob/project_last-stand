@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Project: Last Stand | The Digital Ark",
+  title: "PROJECT: LAST STAND | The Digital Ark",
   description: "Web3D Portfolio featuring React Three Fiber and Next.js.",
 };
 
