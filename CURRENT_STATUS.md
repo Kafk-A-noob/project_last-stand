@@ -25,8 +25,8 @@ Radioモデル (ID-001) は完成し、実装も完了しました。
 ## **Mission: Next Asset & Polish**
 
 1. **Content Production (ID-002 Piano):**
-   - Blenderでのモデリング・テクスチャ作業（進行中）。
-   - 完了次第、`public/models/` へのエクスポートと `asset-manifest.ts` への追加を行う。
+   - Blenderでのモデリング・テクスチャ作業（進行中）
+   - 完了次第、`public/models/` へのエクスポートと `assetanifest.ts` への追加を行う。
 
 2. **UI Polish:**
    - **SmartLoader UI:** ロード時の `MB / MB` 表示が機能していないため、デザイン変更等の改善を行う。
