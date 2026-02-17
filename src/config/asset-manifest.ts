@@ -8,7 +8,7 @@ import { ArchiveItem } from "@/lib/store"
 */
 export const ASSET_MANIFEST: ArchiveItem[] = [
   {
-    id: "item-000-React_Logo",
+    id: "Item-000",
     active: true, // Modeling Party Target: ON
     name: "React_Logo",
     path: "/models/00_React_Logo.glb", // Placeholder: React Logo
@@ -22,7 +22,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     contributor: "KafkA＿",
   },
   {
-    id: "item-001-radio",
+    id: "Item-001",
     active: true, // Modeling Party Target: ON
     name: "Radio",
     path: "/models/01_radio.glb", // Placeholder: 
@@ -38,8 +38,8 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
   // 以下、ID-002以降も同様に
     {
-    id: "item-002-piano",
-    active: false, // まだモデルがないので false
+    id: "Item-002",
+    active: true, // まだモデルがないので false
     name: "Piano",
     path: "/models/02_piano.glb",
     techSpecs: {
@@ -54,7 +54,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-003-can_coffee",
+    id: "Item-003",
     active: false, // まだモデルがないので false
     name: "Can Coffee",
     path: "/models/can_coffee.glb",
@@ -70,7 +70,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-004-acoustic_guitar",
+    id: "Item-004",
     active: false, // まだモデルがないので false
     name: "Acoustic Guitar",
     path: "/models/acoustic_guitar.glb",
@@ -86,7 +86,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-005-favorite_mug",
+    id: "Item-005",
     active: false, // まだモデルがないので false
     name: "Favorite Mug",
     path: "/models/favorite_mug.glb",
@@ -102,7 +102,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-006-Camera",
+    id: "Item-006",
     active: false, // まだモデルがないので false
     name: "Camera",
     path: "/models/camera.glb",
@@ -118,7 +118,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-007-Game_Boy",
+    id: "Item-007",
     active: false, // まだモデルがないので false
     name: "Game Boy",
     path: "/models/game_boy.glb",
@@ -134,7 +134,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-008-Lantern",
+    id: "Item-008",
     active: false, // まだモデルがないので false
     name: "Lantern",
     path: "/models/lantern.glb",
@@ -150,7 +150,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-009-Family_Photo",
+    id: "Item-009",
     active: false, // まだモデルがないので false
     name: "Family Photo",
     path: "/models/family_photo.glb",
