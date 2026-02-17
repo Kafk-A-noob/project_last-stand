@@ -16,6 +16,9 @@
    - 技術レポート (`Tech_Note/00_Dynamic_UI_Mechanisms.md`) とデプロイマニュアル (`Deployment_Guide_Vercel.md`) を作成。
 4. **Asset Manifest:**
    - 全10枠のモデル定義を追加済み。
+5. **CI Fix (Future-Proof):**
+   - `store.test.ts` を静的なアセットパス指定から、`asset-manifest` を動的にループするロジックへリファクタリング。
+   - 今後アセットが増えてもテストコードの修正は不要。GitHub Actions (RunTest) は自動的に適応します。
 
 ## 次回作業への引き継ぎ (Handoff Note)
 
