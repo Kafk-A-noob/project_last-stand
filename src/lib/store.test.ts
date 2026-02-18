@@ -12,53 +12,40 @@ describe('useStore (Navigation Logic)', () => {
       result.current.resetModelData();
     });
   });
+
+  const activeItems = ASSET_MANIFEST.filter(item => item.active);
+
   it('should initialize with the first item', () => {
     const { result } = renderHook(() => useStore());
-    expect(result.current.targetPath).toBe(ASSET_MANIFEST[0].path);
+    expect(result.current.targetPath).toBe(activeItems[0].path);
   });
-  it('goToNext should switch to the next active item', () => {
+
+  it('goToNext should cycle through all active items', () => {
     const { result } = renderHook(() => useStore());
 
-    // 1つ目はReact Logo (active: true)
-    expect(result.current.targetPath).toBe('/models/00_React_Logo.glb');
+    // ループですべてのアイテムをチェック
+    for (let i = 0; i < activeItems.length; i++) {
+        // 現在のターゲットが正しいか確認
+        expect(result.current.targetPath).toBe(activeItems[i].path);
 
-    // Next Action
-    act(() => {
-      result.current.goToNext();
-    });
+        // 次へ進む
+        act(() => {
+            result.current.goToNext();
+        });
+    }
 
-    // 2つ目はRadio (active: true) なので、Radioになるはず
-    expect(result.current.targetPath).toBe('/models/01_radio.glb');
+    // すべて回った後、最初(0番目)に戻っているはず
+    expect(result.current.targetPath).toBe(activeItems[0].path);
   });
-  it('goToNext should loop to the end', () => {
+
+  it('goToPrev should loop to the end', () => {
     const { result } = renderHook(() => useStore());
+    const lastItem = activeItems[activeItems.length - 1];
 
-    /*
-    アクティブな最後のアイテムまで進める
-    (現状アクティブなのは Logo と Radio だけなので、Radioから次は Logo に戻るはず)
-    まずRadioへ
-    */
-  
+    // 最初(0)から戻る -> 最後(length-1)になるはず
     act(() => {
-      result.current.goToNext();
+      result.current.goToPrev();
     });
-      expect(result.current.targetPath).toBe('/models/01_radio.glb');
-
-      // 次へ（ループ）
-      act(() => {
-        result.current.goToNext();
-      });
-
-      // 最初のアイテムに戻るはず
-      expect(result.current.targetPath).toBe('/models/00_React_Logo.glb');
+    expect(result.current.targetPath).toBe(lastItem.path);
   });
-    it('goToPrev should loop to the end', () => {
-      const { result } = renderHook(() => useStore());
-
-      // 最初(Logo)から戻る -> 最後(Radio)になるはず
-      act(() => {
-        result.current.goToPrev();
-      });
-      expect(result.current.targetPath).toBe('/models/01_radio.glb');
-    });
 });

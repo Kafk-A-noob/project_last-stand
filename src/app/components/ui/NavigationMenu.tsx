@@ -32,7 +32,7 @@ export default function NavigationMenu({ onClose }:
           {/* グリッド一覧 */}
           <div className={cn("grid grid-cols-2 md:grid-cols-4",
           "gap-4 max-w-4xl mx-auto")}>
-            {ASSET_MANIFEST.map((item) => {
+            {ASSET_MANIFEST.map((item, index) => {
               const isLocked = !item.active;
               const isActive = item.path === currentPath;
 
@@ -62,7 +62,8 @@ export default function NavigationMenu({ onClose }:
                 )}
                 >
                   <div className="text-xl font-bold">
-                    {isLocked ? "?" : item.name[0]} {/* 頭文字を表示 */}
+                    {/* Lock時は「?」、それ以外は「00, 01...」を表示 */}
+                    {isLocked ? "?" : index.toString().padStart(2, "0")}
                   </div>
                   <div className="text-xs text-center">{item.name}</div>
                   {isLocked && (

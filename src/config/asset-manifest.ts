@@ -8,9 +8,9 @@ import { ArchiveItem } from "@/lib/store"
 */
 export const ASSET_MANIFEST: ArchiveItem[] = [
   {
-    id: "item-000-React_Logo",
+    id: "Item-000",
     active: true, // Modeling Party Target: ON
-    name: "00_React_Logo",
+    name: "React_Logo",
     path: "/models/00_React_Logo.glb", // Placeholder: React Logo
     // 初期値として記述
     techSpecs: {
@@ -22,9 +22,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     contributor: "KafkA＿",
   },
   {
-    id: "item-001-radio",
+    id: "Item-001",
     active: true, // Modeling Party Target: ON
-    name: "01_Radio",
+    name: "Radio",
     path: "/models/01_radio.glb", // Placeholder: 
     techSpecs: {
       fileSize: "0.983 MB", // 容量
@@ -38,9 +38,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
   // 以下、ID-002以降も同様に
     {
-    id: "item-002-piano",
-    active: true,
-    name: "02_Piano",
+    id: "Item-002",
+    active: true, // まだモデルがないので false
+    name: "Piano",
     path: "/models/02_piano.glb",
     techSpecs: {
       fileSize: "1.076MB",
@@ -54,9 +54,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-003-can_coffee",
+    id: "Item-003",
     active: false, // まだモデルがないので false
-    name: "03_Can_Coffee",
+    name: "Can Coffee",
     path: "/models/can_coffee.glb",
     techSpecs: {
       fileSize: "TBD",
@@ -70,9 +70,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-004-acoustic_guitar",
+    id: "Item-004",
     active: false, // まだモデルがないので false
-    name: "04_Acoustic_Guitar",
+    name: "Acoustic Guitar",
     path: "/models/acoustic_guitar.glb",
     techSpecs: {
       fileSize: "TBD",
@@ -86,9 +86,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-005-favorite_mug",
+    id: "Item-005",
     active: false, // まだモデルがないので false
-    name: "05_Favorite_Mug",
+    name: "Favorite Mug",
     path: "/models/favorite_mug.glb",
     techSpecs: {
       fileSize: "TBD",
@@ -102,9 +102,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-006-Camera",
+    id: "Item-006",
     active: false, // まだモデルがないので false
-    name: "06_Camera",
+    name: "Camera",
     path: "/models/camera.glb",
     techSpecs: {
       fileSize: "TBD",
@@ -118,9 +118,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-007-Game_Boy",
+    id: "Item-007",
     active: false, // まだモデルがないので false
-    name: "07_Game_Boy",
+    name: "Game Boy",
     path: "/models/game_boy.glb",
     techSpecs: {
       fileSize: "TBD",
@@ -134,9 +134,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-008-Lantern",
+    id: "Item-008",
     active: false, // まだモデルがないので false
-    name: "08_Lantern",
+    name: "Lantern",
     path: "/models/lantern.glb",
     techSpecs: {
       fileSize: "TBD",
@@ -150,9 +150,9 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   },
 
     {
-    id: "item-009-Family_Photo",
+    id: "Item-009",
     active: false, // まだモデルがないので false
-    name: "09_Family_Photo",
+    name: "Family Photo",
     path: "/models/family_photo.glb",
     techSpecs: {
       fileSize: "TBD",
@@ -161,7 +161,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     scale: [1,1,1],
     position: [0,0,0],
     quote: "",
-    description: "",
+    description: "最期まで一緒に",
     contributor: "ひるねこ",
   },
 ];
