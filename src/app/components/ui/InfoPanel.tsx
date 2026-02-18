@@ -18,7 +18,7 @@ export default function InfoPanel() {
         "hover:bg-black/90 select-none",
       )}
     >
-      {/* Name/Quote Section */}
+      {/* Name/Quote/ID Section */}
       <h2
         className={cn(
           "text-lg font-bold mb-1 text-white flex",
@@ -37,6 +37,12 @@ export default function InfoPanel() {
           ▼
         </span>
       </h2>
+
+      {/* ID Display */}
+      <div className={cn("text-cyan-500/70 font-mono",
+        "mb-2 tracking-widest")}>
+          {currentModel.id.toUpperCase()}
+        </div>
       <div className="text-xs text-gray-400 mb-4 italic">
         &quot;{currentModel.quote}&quot;
       </div>
