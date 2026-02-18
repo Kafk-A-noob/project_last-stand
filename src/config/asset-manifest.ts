@@ -39,11 +39,11 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   // 以下、ID-002以降も同様に
     {
     id: "item-002-piano",
-    active: false, // まだモデルがないので false
+    active: true,
     name: "02_Piano",
     path: "/models/02_piano.glb",
     techSpecs: {
-      fileSize: "TBD",
+      fileSize: "1.076MB",
     },
     rotationSpeed: [0,0,0],
     scale: [1,1,1],
