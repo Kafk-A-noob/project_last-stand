@@ -47,7 +47,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     },
     rotationSpeed: [0,-0.5,0],
     scale: [1,1,1],
-    position: [0,-1.2,0],
+    position: [0,-0.6,0],
     quote: "人間たちに音楽があったことを、知ってもらえるから。",
     description: "私にとって唯一の、絶対に裏切らない友人として。そして、いつかこれを拾うかもしれない誰かが、音を楽しんでくれることを願って。",
     contributor: "Yuduki",
