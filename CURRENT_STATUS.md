@@ -19,6 +19,9 @@
 5. **CI Fix (Future-Proof):**
    - `store.test.ts` を静的なアセットパス指定から、`asset-manifest` を動的にループするロジックへリファクタリング。
    - 今後アセットが増えてもテストコードの修正は不要。GitHub Actions (RunTest) は自動的に適応します。
+6. **Manifest Cleanup:**
+   - `Item-000` (React Logo) を `active: false` に変更し、初期ロードを「Radio」に変更。
+   - `store.ts` の初期化ロジックとテストコードが、自動的に「最初のActiveなアイテム」を認識するように修正済み。
 
 ## 次回作業への引き継ぎ (Handoff Note)
 

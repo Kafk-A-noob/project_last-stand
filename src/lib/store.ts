@@ -52,11 +52,14 @@ interface AppState {
 }
 
 // ストア作成
+// 初期ロード時に最初のactiveなアイテムを探す
+const initialItem = ASSET_MANIFEST.find((item) => item.active) || ASSET_MANIFEST[0];
+
 export const useStore = create<AppState>((set) => ({
   isLoaded: false,
-  currentModel: ASSET_MANIFEST[0],// nullではなく初期値を入れる
+  currentModel: initialItem, // activeな最初のアイテム
 
-  targetPath: ASSET_MANIFEST[0].path,
+  targetPath: initialItem.path,
   setTargetPath: (path) => {
     // パスから次のモデルデータを探す
     const target = ASSET_MANIFEST.find((item) => item.path === path);
