@@ -120,7 +120,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "Item-007",
     active: false, // まだモデルがないので false
-    name: "Game Boy",
+    name: "Retro Console",
     path: "/models/game_boy.glb",
     techSpecs: {
       fileSize: "TBD",
