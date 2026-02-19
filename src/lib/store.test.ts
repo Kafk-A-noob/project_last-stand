@@ -4,16 +4,17 @@ import { useStore } from './store';
 import { ASSET_MANIFEST } from '@/config/asset-manifest';
 
 describe('useStore (Navigation Logic)', () => {
+  const activeItems = ASSET_MANIFEST.filter(item => item.active);
+
   // 各テスト前にストアをリセット（副作用を防ぐ）
   beforeEach(() => {
     const { result } = renderHook(() => useStore());
     act(() => {
-      result.current.setTargetPath(ASSET_MANIFEST[0].path);
+      // テスト開始時は「最初のActiveItem」にリセットする
+      result.current.setTargetPath(activeItems[0].path);
       result.current.resetModelData();
     });
   });
-
-  const activeItems = ASSET_MANIFEST.filter(item => item.active);
 
   it('should initialize with the first item', () => {
     const { result } = renderHook(() => useStore());
