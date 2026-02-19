@@ -41,15 +41,15 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "Item-002",
     active: true, // まだモデルがないので false
     name: "Piano",
-    path: "/models/02_piano.glb",
+    path: "/models/02_Piano.glb",
     techSpecs: {
-      fileSize: "TBD",
+      fileSize: "1.076MB",
     },
-    rotationSpeed: [0,0,0],
-    scale: [1,1,1],
-    position: [0,0,0],
+    rotationSpeed: [0,-0.5,0],
+    scale: [3,3,3],
+    position: [0,-0.3,0],
     quote: "人間たちに音楽があったことを、知ってもらえるから。",
-    description: "私にとって唯一の、絶対に裏切らない友人として。そして、いつかこれを拾うかもしれない人類ではない誰かが、音を楽しんでくれることを願って。",
+    description: "私にとって唯一の、絶対に裏切らない友人として。そして、いつかこれを拾うかもしれない誰かが、音を楽しんでくれることを願って。",
     contributor: "Yuduki",
   },
 
@@ -120,7 +120,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "Item-007",
     active: false, // まだモデルがないので false
-    name: "Game Boy",
+    name: "Retro Console",
     path: "/models/game_boy.glb",
     techSpecs: {
       fileSize: "TBD",
