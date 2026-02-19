@@ -9,7 +9,7 @@ import { ArchiveItem } from "@/lib/store"
 export const ASSET_MANIFEST: ArchiveItem[] = [
   {
     id: "Item-000",
-    active: false, // 
+    active: false, // 役目終了
     name: "React_Logo",
     path: "/models/00_React_Logo.glb", // Placeholder: React Logo
     // 初期値として記述
