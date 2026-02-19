@@ -9,7 +9,7 @@ import { ArchiveItem } from "@/lib/store"
 export const ASSET_MANIFEST: ArchiveItem[] = [
   {
     id: "Item-000",
-    active: true, // Modeling Party Target: ON
+    active: false, // 役目終了
     name: "React_Logo",
     path: "/models/00_React_Logo.glb", // Placeholder: React Logo
     // 初期値として記述
@@ -120,7 +120,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     {
     id: "Item-007",
     active: false, // まだモデルがないので false
-    name: "Game Boy",
+    name: "Retro Console",
     path: "/models/game_boy.glb",
     techSpecs: {
       fileSize: "TBD",
