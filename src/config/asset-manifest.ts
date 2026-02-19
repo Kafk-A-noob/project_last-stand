@@ -50,7 +50,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     position: [0,-0.3,0],
     quote: "人間たちに音楽があったことを、知ってもらえるから。",
     description: "私にとって唯一の、絶対に裏切らない友人として。そして、いつかこれを拾うかもしれない誰かが、音を楽しんでくれることを願って。",
-    contributor: "Yuduki",
+    contributor: "Yuzuki",
   },
 
     {
