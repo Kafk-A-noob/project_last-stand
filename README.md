@@ -5,7 +5,7 @@
 ## Overview (概要)
 
 **Next.js 15+ (App Router)** と **React Three Fiber** を用いた、Web3Dポートフォリオ/デジタルアーカイブ。
-Unity/VRChatの体験をモダンWebスタンダードで再構築し、**Optimistic UI** や **Hybrid State Management** などの高度な設計パターンを実証しています。
+Unity/VRChat・職業訓練校の経験をモダンWebスタンダードで構築しています。
 
 ## Tech Stack (使用技術)
 
