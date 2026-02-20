@@ -63,7 +63,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     },
     rotationSpeed: [0,-0.5,0],
     scale: [20,20,20],
-    position: [0,0,2],
+    position: [0,1.5,0],
     quote: "一日の始まりの一杯",
     description: "毎朝飲んでいたショート缶。",
     contributor: "A certain pilot",
