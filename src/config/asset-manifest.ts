@@ -25,7 +25,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "Item-001",
     active: true, // Modeling Party Target: ON
     name: "Radio",
-    path: "/models/01_radio.glb", // Placeholder: 
+    path: "/models/01_Radio.glb", // Placeholder: 
     techSpecs: {
       fileSize: "0.983 MB", // 容量
     },
@@ -39,7 +39,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
   // 以下、ID-002以降も同様に
     {
     id: "Item-002",
-    active: true, // まだモデルがないので false
+    active: true, 
     name: "Piano",
     path: "/models/02_Piano.glb",
     techSpecs: {
@@ -55,25 +55,25 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
 
     {
     id: "Item-003",
-    active: false, // まだモデルがないので false
+    active: true, 
     name: "Can Coffee",
-    path: "/models/can_coffee.glb",
+    path: "/models/03_Can_Coffee.glb",
     techSpecs: {
-      fileSize: "TBD",
+      fileSize: "0.214MB",
     },
-    rotationSpeed: [0,0,0],
-    scale: [1,1,1],
+    rotationSpeed: [0,-0.5,0],
+    scale: [9,9,9],
     position: [0,0,0],
     quote: "一日の始まりの一杯",
     description: "毎朝飲んでいたショート缶。",
-    contributor: "Anonymous",
+    contributor: "A certain pilot",
   },
 
     {
     id: "Item-004",
     active: false, // まだモデルがないので false
     name: "Acoustic Guitar",
-    path: "/models/acoustic_guitar.glb",
+    path: "/models/04_Acoustic_Guitar.glb",
     techSpecs: {
       fileSize: "TBD",
     },
@@ -89,7 +89,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "Item-005",
     active: false, // まだモデルがないので false
     name: "Favorite Mug",
-    path: "/models/favorite_mug.glb",
+    path: "/models/05_Favorite_Mug.glb",
     techSpecs: {
       fileSize: "TBD",
     },
@@ -98,14 +98,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     position: [0,0,0],
     quote: "世界が終わっても喉は乾くし腹は減るから",
     description: "最後の一杯",
-    contributor: "Anonymous",
+    contributor: "A certain traveler",
   },
 
     {
     id: "Item-006",
     active: false, // まだモデルがないので false
     name: "Camera",
-    path: "/models/camera.glb",
+    path: "/models/06_Camera.glb",
     techSpecs: {
       fileSize: "TBD",
     },
@@ -121,7 +121,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "Item-007",
     active: false, // まだモデルがないので false
     name: "Retro Console",
-    path: "/models/game_boy.glb",
+    path: "/models/07_Retro_Console.glb",
     techSpecs: {
       fileSize: "TBD",
     },
@@ -137,7 +137,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "Item-008",
     active: false, // まだモデルがないので false
     name: "Lantern",
-    path: "/models/lantern.glb",
+    path: "/models/08_Lantern.glb",
     techSpecs: {
       fileSize: "TBD",
     },
@@ -153,7 +153,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     id: "Item-009",
     active: false, // まだモデルがないので false
     name: "Family Photo",
-    path: "/models/family_photo.glb",
+    path: "/models/09_Family_Photo.glb",
     techSpecs: {
       fileSize: "TBD",
     },
@@ -165,3 +165,5 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     contributor: "ひるねこ",
   },
 ];
+
+
