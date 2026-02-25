@@ -48,4 +48,4 @@ next-env.d.ts
 .env*.local
 
 # Folder
-Docs/01_Job_Hunting
+/Docs/99_Job_Hunting
