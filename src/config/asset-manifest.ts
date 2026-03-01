@@ -71,14 +71,14 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
 
     {
     id: "Item-004",
-    active: false, // まだモデルがないので false
+    active: true,
     name: "Acoustic Guitar",
     path: "/models/04_Acoustic_Guitar.glb",
     techSpecs: {
-      fileSize: "TBD",
+      fileSize: "3.745MB",
     },
-    rotationSpeed: [0,0,0],
-    scale: [1,1,1],
+    rotationSpeed: [0,-0.5,0],
+    scale: [3,3,3],
     position: [0,0,0],
     quote: "外に出せなかった憧れを、こんな時ぐらいは出してもいいんじゃないでしょうか",
     description: "ずっと弾けずにしまってあったギター。",
