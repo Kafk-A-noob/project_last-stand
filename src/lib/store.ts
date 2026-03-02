@@ -21,6 +21,7 @@ export type ArchiveItem = {
   // 個別のトランスフォーム設定
   scale?: [number, number, number];    // 例: [2, 2, 2]
   position?: [number, number, number]; // 例: [0, -1, 0]
+  rotation?: [number, number, number]; // 例: [Math.PI / 4, 0, 0] (静的な初期角度)
 
   // Tech Specs (The Flex)
   techSpecs?: {

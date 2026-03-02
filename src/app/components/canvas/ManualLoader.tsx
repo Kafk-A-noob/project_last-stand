@@ -12,6 +12,7 @@ export default function ManualLoader() {
   const updateModel = useStore((state) => state.setModelData);
   const scale = currentModel?.scale || [1, 1, 1];
   const position = currentModel?.position || [0, 0, 0];
+  const rotation = currentModel?.rotation || [0, 0, 0];
 
   // useGLTF: 自動でキャッシュ・Draco対応
   const { scene } = useGLTF(targetPath, "/draco/");
@@ -75,6 +76,7 @@ export default function ManualLoader() {
       dispose={null}
       scale={scale}
       position={position}
+      rotation={rotation}
     />
   );
 }
