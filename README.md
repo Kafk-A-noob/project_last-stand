@@ -5,7 +5,7 @@
 ## Overview (概要)
 
 **Next.js 15+ (App Router)** と **React Three Fiber** を用いた、Web3Dポートフォリオ/デジタルアーカイブ。
-Unity/VRChat・職業訓練校の経験をモダンWebスタンダードで構築しています。
+Unityを用いた3Dアセット制作の知見と、職業訓練校での学びを活かし、モダンWebスタンダードで構築しています。
 
 ## Tech Stack (使用技術)
 
@@ -14,32 +14,31 @@ Unity/VRChat・職業訓練校の経験をモダンWebスタンダードで構�
 - **State Management:** Zustand
 - **Styling:** Tailwind CSS
 - **Testing:** Vitest (CI Integration)
+- **AI Mentorship:** Gemini AI (技術顧問・資料作成として活用)
 
-## Key Features (主な機能)
+## Key Features (主な工夫した点)
 
-- **Optimistic UI Navigation:**
-  アセットロード待ち時間をゼロに感じさせる、非同期状態分離による即時遷移システム (`store.ts`)。
-- **Hybrid State Management:**
-  React (UI) と R3F (Canvas) のステートを効率的に分離し、再レンダリングを最小限に抑えた設計。
-- **SmartLoader System:**
-  サーバーレス環境特有の `Content-Length` 欠損問題に対し、マニフェスト主導のフォールバックロジックで正確な進捗を表示。
-- **Dynamic Data-Driven UI:**
-  データ管理と表示名・連番の責務を分離し、メンテナンス性と美観を両立。
-- **Asset Manifest System:**
-  静的アセット定義 (`asset-manifest.ts`) をSingle Source of Truthとし、ゼロレイテンシでのメタデータアクセスを実現。
-- **Draco Compression:**
-  Google Draco圧縮による、高パフォーマンスな3Dアセット配信。
+- **Optimistic UI (先読み画面遷移):**
+  3Dデータを待つ間もUIだけは即座に切り替わるようにし、ユーザーが「重い」と感じにくい工夫（状態管理の分離）をしています。
+- **SmartLoader System (プログレス表示):**
+  Vercelでダウンロード容量が上手く取れない問題に対し、事前に設定したマニフェスト（設定情報）から容量を逆算し、正確なローディングのカウントアップを表示する仕組みを組み込みました。
+- **データ駆動型UI (追加が簡単な設計):**
+  モデルを追加する際、UIのコードをいじらなくても設定ファイル (`asset-manifest.ts`) を1行追加するだけで、名前や番号、3Dモデルが自動で画面に反映される設計にしています。
+- **Draco Compression (モデルの軽量化):**
+  GoogleのDraco圧縮規格を用いて、高画質な3Dモデルのファイルサイズを極限まで削り、ブラウザでも快適に動くように最適化しました。
 
-## Documentation (ドキュメント)
+## Documentation (関連資料)
 
-包括的な技術文書と開発ログです。
+本プロジェクトの仕様から日々の作業ログに至るまでを記録しています。
 
-- **[Specifications](Docs/00_Specs/): Folder**
-  システムアーキテクチャ、画面設計、開発ロードマップ。
-- **[Technical Reports](Docs/03_Technical/): Folder**
-  実装詳細、技術選定の理由、トラブルシューティング記録。
-- **[Development Logs](Docs/02_Logs/): Folder**
-  日々の開発履歴と意思決定のプロセス。
+- **[00_Specs/](Docs/00_Specs/):**
+  全体仕様書、画面設計、開発のロードマップ。
+- **[01_Logs/](Docs/01_Logs/):**
+  日々の実装手順や作業履歴（AIとのペアプログラミング記録）。
+- **[02_Technical/](Docs/02_Technical/):**
+  技術的なレポート、バグの解決策、なぜその技術を選んだかの理由。
+- **[03_Manual/](Docs/03_Manual/):**
+  手動デプロイの手順などを含む操作マニュアル。
 
 ## Quick Start
 
