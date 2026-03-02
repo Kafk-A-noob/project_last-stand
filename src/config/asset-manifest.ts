@@ -90,15 +90,16 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
 
     {
     id: "Item-005",
-    active: false, // まだモデルがないので false
+    active: true, 
     name: "Favorite Mug",
     path: "/models/05_Favorite_Mug.glb",
     techSpecs: {
-      fileSize: "TBD",
+      fileSize: "219KB",
     },
-    rotationSpeed: [0,0,0],
-    scale: [1,1,1],
-    position: [0,0,0],
+    rotationSpeed: [0,-0.5,0],
+    scale: [30,30,30],
+    position: [0,-1.5,0],
+    rotation: [0.1, 0, 0],
     quote: "世界が終わっても喉は乾くし腹は減るから",
     description: "最後の一杯",
     contributor: "A certain traveler",
