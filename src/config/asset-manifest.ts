@@ -47,7 +47,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     },
     rotationSpeed: [0,-0.5,0],
     scale: [3,3,3],
-    position: [0,-0.3,0],
+    position: [0,-0.9,0],
     rotation: [0.2, 0, 0], // 少しだけ手前に倒して、見下ろしているように
     quote: "人間たちに音楽があったことを、知ってもらえるから。",
     description: "私にとって唯一の、絶対に裏切らない友人として。そして、いつかこれを拾うかもしれない誰かが、音を楽しんでくれることを願って。",
@@ -64,7 +64,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     },
     rotationSpeed: [0,-0.5,0],
     scale: [20,20,20],
-    position: [0,-1.5,0],
+    position: [0,-1.8,0],
     rotation: [0.2, 0, 0],
     quote: "一日の始まりの一杯",
     description: "毎朝飲んでいたショート缶。",
@@ -81,7 +81,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     },
     rotationSpeed: [0,-0.5,0],
     scale: [3,3,3],
-    position: [0,0,0],
+    position: [0,-1.5,0],
     rotation: [Math.PI / 2, -0.2, 0], // X軸で90度起こして寝ている状態から立たせ、Yで少し斜めに立てかける
     quote: "外に出せなかった憧れを、こんな時ぐらいは出してもいいんじゃないでしょうか",
     description: "ずっと弾けずにしまってあったギター。",
