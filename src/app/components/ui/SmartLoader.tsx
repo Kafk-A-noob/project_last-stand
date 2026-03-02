@@ -11,18 +11,17 @@ export default function SmartLoader() {
   // loaded: 読み込み済みバイト数
   // total: 全体のバイト数
   // progress: 0~100の進捗率
-  const { progress, loaded, total } = useProgress();
+  const { progress } = useProgress();
   const currentModel = useStore((state) => state.currentModel);
   const manualSize = currentModel?.techSpecs?.fileSize;
-  // ヘルパー関数: バイト数を "XX.XX MB" という文字列に変換
-  const toMB = (bytes: number) => (bytes / 1024 / 1024).toFixed(2);
-
   /*
 [Logic] 分母(Total)の表示決定
 手動サイズがあるならそれを使う。
-なければ auto total を使う（0なら表示しない）
 */
-  const displayTotal = manualSize ? manualSize : total > 0 ? toMB(total) : null;
+  const calculatedMB = manualSize
+    ? (Number(manualSize) * (progress / 100)).toFixed(2)
+    : "0.00";
+  const displayTotal = manualSize ? Number(manualSize).toFixed(2) : null;
 
   return (
     <Html center>
@@ -46,13 +45,13 @@ export default function SmartLoader() {
         <div className="flex gap-2 items-baseline">
           {/* ロード済み (分子) */}
           <span className="text-cyan-400 font-bold">
-            {toMB(loaded)}
+            {calculatedMB}
             MB
           </span>
 
           {/* スラッシュと合計 (分母) - 存在する場合のみ */}
           {displayTotal && (
-            <span className="text-gray-500 text-sm">/ {displayTotal}</span>
+            <span className="text-gray-500 text-sm">/ {displayTotal}MB</span>
           )}
         </div>
 
