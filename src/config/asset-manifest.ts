@@ -97,7 +97,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
       fileSize: "219KB",
     },
     rotationSpeed: [0,-0.5,0],
-    scale: [30,30,30],
+    scale: [25,25,25],
     position: [0,-1.5,0],
     rotation: [0.1, 0, 0],
     quote: "世界が終わっても喉は乾くし腹は減るから",
