@@ -14,7 +14,7 @@ Reactの設計原則では、「UIの状態 (`State`)」は「外部リソース
 
 ## 2. 概念翻訳 (Concept Translation)
 
-### Unity/VRChatでの例え
+### Unity/リアルタイム3Dコンテンツでの例え
 
 - **変更前:** `GameObject` が `Instantiate` され、その `Start()` 関数が呼ばれて初めて、UIパネルのテキスト (`Text.text`) を書き換える方式。もし `Instantiate` に失敗したら、UIはずっと前のアイテムのまま。
 - **変更後:** 「武器選択ボタン」を押した瞬間に、まずUIパネルのテキスト (`Text.text`) を強制的に書き換える。その後、非同期でプレハブのロード (`Resources.LoadAsync`) を開始する方式。これを Web開発では **「楽観的UI更新 (Optimistic UI Update)」** と呼びます。

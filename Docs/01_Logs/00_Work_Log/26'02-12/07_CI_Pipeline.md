@@ -37,7 +37,7 @@ Unityで言えば、ビルドサーバー（Unity Cloud Build）の設定ファ�
 
 まず、「いつ」執事に働いてもらうかを定義します。
 
-**概念翻訳 (Unity/VRChat):**
+**概念翻訳 (Unity/リアルタイム3Dコンテンツ):**
 
 - **`OnTriggerEnter`** のようなものです。「Player (`main` ブランチ) が `Push` ゾーンに入ったら発動せよ」という命令です。
 

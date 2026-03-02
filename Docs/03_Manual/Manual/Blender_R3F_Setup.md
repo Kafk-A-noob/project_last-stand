@@ -6,7 +6,7 @@ Unityの「FBX Export -> Unity Import」に相当する、Web開発における�
 
 ### Unity vs Web (R3F)
 
-| 項目 | Unity (VRChat) | Web (R3F / Three.js) |
+| 項目 | Unity (リアルタイム3Dコンテンツ) | Web (R3F / Three.js) |
 | :--- | :--- | :--- |
 | **標準フォーマット** | .fbx | **.glb** (glTF Binary) |
 | **座標系** | 左手系 (Y-Up) | **右手系 (Y-Up)** ※自動変換されるが注意 |
@@ -45,7 +45,7 @@ R3Fの `MeshStandardMaterial` に自動変換されるための設定です。
     * **Base Color:** 色またはテクスチャ
     * **Metallic:** 0.0 (非金属) ~ 1.0 (金属)
     * **Roughness:** 0.0 (ツルツル) ~ 1.0 (ザラザラ)
-3. **注意:** VRChat用のカスタムシェーダー (LilToon等) は**Webでは動きません**。必ずPrincipled BSDFにベイクするか、単純なパラメータに置き換えてください。
+3. **注意:** リアルタイム3Dコンテンツ用のカスタムシェーダー (LilToon等) は**Webでは動きません**。必ずPrincipled BSDFにベイクするか、単純なパラメータに置き換えてください。
 
 ---
 

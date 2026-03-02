@@ -41,7 +41,7 @@ export default function ViewerLayout({ children }: { children: React.ReactNode }
           <h1 className="text-white text-2xl font-bold tracking-widest">
             PROJECT: LAST STAND
           </h1>
-          <p className="text-gray-400 text-xs">VRChat / Blender / Web3D Portfolio</p>
+          <p className="text-gray-400 text-xs">リアルタイム3Dコンテンツ / Blender / Web3D Portfolio</p>
         </header>
 
         {/* Footer / Controls */}
