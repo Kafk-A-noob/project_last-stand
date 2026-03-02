@@ -13,7 +13,9 @@ export default function SmartLoader() {
   // progress: 0~100の進捗率
   const { progress } = useProgress();
   const currentModel = useStore((state) => state.currentModel);
-  const manualSize = currentModel?.techSpecs?.fileSize;
+  // parseFloatを使い"0.983 MB" から自動的に "0.983" (数値)だけを抽出
+  const rawSizeString = currentModel?.techSpecs?.fileSize || "0";
+  const manualSize = parseFloat(rawSizeString) || 0; 
   /*
 [Logic] 分母(Total)の表示決定
 手動サイズがあるならそれを使う。
