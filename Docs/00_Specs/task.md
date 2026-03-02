@@ -35,7 +35,7 @@
 ## Phase 1.9: Blender to Web 理論 (Blender Theory) [2026年1月27日]
 
 - [x] **Standard Shader -> PBR (glTF) 変換理論**
-  - [x] VRChat(Metallic/Smoothness) との違い
+  - [x] リアルタイム3Dコンテンツ(Metallic/Smoothness) との違い
   - [x] ORM Map (R:Occlusion, G:Roughness, B:Metalness) の理解
 
 ## Phase 3.0: コンセプト・設計戦略 (Concept Strategy) [2026年1月27日]

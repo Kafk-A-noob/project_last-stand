@@ -15,7 +15,7 @@
 
 #### [NEW] Docs/Implementation_Intent/05_Phase3.0_Design_Strategy.md
 
-- **Concept:** 「VRChat衣装 × WebGL」
+- **Concept:** 「リアルタイム3Dコンテンツ衣装 × WebGL」
 - **Theme:** Virtual Boutique / Digital Fashion
 - **Target Audience:** Web制作会社のテクニカルディレクター、採用担当者
 - **Key Features:**

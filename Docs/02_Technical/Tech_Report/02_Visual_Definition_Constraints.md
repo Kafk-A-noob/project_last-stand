@@ -7,7 +7,7 @@
 ## 1. 概要 (Overview)
 
 本プロジェクトは **「モバイルブラウザでも動作するWeb3Dポートフォリオ」** を目指しています。
-一般的なPC向けVRChatアセットとは異なり、厳しいパフォーマンス制約と描画エンジンの特性（WebGL/Three.js）を考慮したモデリングが必要です。
+一般的なPC向けリアルタイム3Dコンテンツアセットとは異なり、厳しいパフォーマンス制約と描画エンジンの特性（WebGL/Three.js）を考慮したモデリングが必要です。
 
 ### Cargo List (Defined Assets) 26'02-05時点
 
@@ -34,7 +34,7 @@
 - **Polycount:**
   - **Hero Asset (Main):** **Max 20,000 tris** (推奨: 15,000程度)
   - **Environment (Sub):** **Max 5,000 tris**
-  - VRChat環境と異なり、一度に1体しか表示しないため、表現力を優先して高めに設定します。
+  - リアルタイム3Dコンテンツ環境と異なり、一度に1体しか表示しないため、表現力を優先して高めに設定します。
 - **Texture Size:** **Max 1024x1024** (推奨: 512px)
 - **Maps:** BaseColor, Metallic, Roughness, Normal, Emissive
 - **Shading:** Smooth Shading (Auto Smooth)

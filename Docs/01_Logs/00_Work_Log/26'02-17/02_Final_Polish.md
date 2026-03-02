@@ -65,7 +65,7 @@ GitHubのトップページに、今回実装した技術的成果をアピー�
 ## Overview (概要)
 
 **Next.js 15+ (App Router)** と **React Three Fiber** を用いた、Web3Dポートフォリオ/デジタルアーカイブ。
-Unity/VRChatの体験をモダンWebスタンダードで再構築し、**Optimistic UI** や **Hybrid State Management** などの高度な設計パターンを実証しています。
+Unity/リアルタイム3Dコンテンツの体験をモダンWebスタンダードで再構築し、**Optimistic UI** や **Hybrid State Management** などの高度な設計パターンを実証しています。
 
 ## Tech Stack (使用技術)
 

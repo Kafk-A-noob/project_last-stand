@@ -3,7 +3,7 @@
 ## 1. 目的
 
 - 指定された3Dモデル(`.glb`)を表示する「器（うつわ）」を作る。
-- VRChatで言うところの、**「アバターが入っていない空のAvatar Descriptor」** に、外部からFBXを放り込むような仕組み。
+- リアルタイム3Dコンテンツで言うところの、**「アバターが入っていない空のAvatar Descriptor」** に、外部からFBXを放り込むような仕組み。
 
 ## 2. Unity(Inspector) 翻訳
 
@@ -41,7 +41,7 @@ export default function ModelViewer({
 }: ModelViewerProps) {
     
     // 1. ダウンロード & ロード (非同期)
-    // VRChatでLoadingアバターが出ている状態の裏で走る処理
+    // リアルタイム3DコンテンツでLoadingアバターが出ている状態の裏で走る処理
     const { scene, animations } = useGLTF(path)
     
     // 2. アニメーションシステムの準備

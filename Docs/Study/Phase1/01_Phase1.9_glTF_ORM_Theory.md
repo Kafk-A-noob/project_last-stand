@@ -1,13 +1,13 @@
 # Blender to Web: Standard Shader から PBR (glTF) への頭の切り替え
 
-VRChat民がWeb3D (glTF) に移行する際、最も混乱するのが **「テクスチャのまとめ方 (Packing)」** です。
+3DモデラーがWeb3D (glTF) に移行する際、最も混乱するのが **「テクスチャのまとめ方 (Packing)」** です。
 「Standard Shader (Unity)」と 「Standard Material (glTF)」は名前は似ていますが、**中身（チャンネルの使い道）は別物** です。
 
 ## 1. 比較: Unity vs Web (glTF)
 
 Webでは通信量を減らすため、**「白黒の画像は1枚のRGBA画像にまとめる」** のが鉄則です。
 
-| 特性 | VRChat (Standard Shader) | Web (glTF PBR) | 解説 |
+| 特性 | リアルタイム3Dコンテンツ (Standard Shader) | Web (glTF PBR) | 解説 |
 | :--- | :--- | :--- | :--- |
 | **金属度** | `Metallic` (Alpha Channel等) | **B**lue Channel | Metalness。ほぼ同じ。 |
 | **滑らかさ** | `Smoothness` (Alpha Channel等) | ❌ (存在しない) | WebにはSmoothnessはありません。 |
@@ -68,4 +68,4 @@ graph LR
 4. `AO` (Red), `Roughness` (Green), `Metallic` (Blue) の順で **Combine RGB** ノードに繋ぐ。
 5. これをテクスチャとしてベイクする。
 
-これで、WebブラウザでもVRChatと同じような質感が再現できます。
+これで、Webブラウザでもリアルタイム3Dコンテンツと同じような質感が再現できます。
