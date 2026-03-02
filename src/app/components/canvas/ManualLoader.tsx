@@ -70,13 +70,14 @@ export default function ManualLoader() {
   // クローンして描画 + dispose={null}
   // ここで clone(true) しないとキャッシュ本体が使われてしまい、Context Lostの原因になる
   return (
+    <group ref={meshRef}>{/*←rotationSpeedはこの親グループにかける */}
     <primitive
       object={scene.clone(true)}
-      ref={meshRef}
       dispose={null}
       scale={scale}
       position={position}
       rotation={rotation}
     />
+    </group>
   );
 }
