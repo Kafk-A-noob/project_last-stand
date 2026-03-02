@@ -1,46 +1,39 @@
 # 現在の状況 (Current Status)
 
+fix/ui-polish-numbering
 最終更新日: 2026-02-25
 ステータス: **Phase 5.2/6: Docs Viewer Automation Planning (In Progress) & Pending Deploy**
+
 **TRAINING MODE: [ON]**
 
 ## 今日の成果 (Today's Achievements)
 
-1. **SmartLoader Fix:**
-   - マニフェスト手動定義 (`techSpecs.fileSize`) によるサイズ表示フォールバックを実装。サーバーレス環境での「0/0 MB」問題を解決。
-2. **Dynamic UI Polish:**
-   - データ管理名と表示名を分離し、UI側で自動連番 (`01`, `02`...) を生成するロジックを実装。
-   - `InfoPanel` に管理IDを表示し、SEOメタデータを更新。
-3. **Documentation:**
-   - `README.md` を日英ハイブリッド形式に刷新。
-   - 技術レポート (`Tech_Note/00_Dynamic_UI_Mechanisms.md`) とデプロイマニュアル (`Deployment_Guide_Vercel.md`) を作成。
-4. **Asset Manifest:**
-   - 全10枠のモデル定義を追加済み。
-5. **CI Fix (Future-Proof):**
-   - `store.test.ts` を静的なアセットパス指定から、`asset-manifest` を動的にループするロジックへリファクタリング。
-   - 今後アセットが増えてもテストコードの修正は不要。GitHub Actions (RunTest) は自動的に適応します。
-6. **Manifest Cleanup:**
-   - `Item-000` (React Logo) を `active: false` に変更し、初期ロードを「Radio」に変更。
-   - `store.ts` の初期化ロジックとテストコードが、自動的に「最初のActiveなアイテム」を認識するように修正済み。
+1. **Vercel 404 Error Fix:**
+   - Linux環境に起因するGitの大文字・小文字区別問題により `01_Radio.glb` が404になっていた問題を特定。
+   - `git mv` にて大文字対応を行い、正常なデプロイとプレビューを確認。
+2. **Origin Offset Investigation:**
+   - 缶コーヒーモデル (`Item-003`) が飛んでしまう原点ズレ問題の原因を調査。
+   - `ManualLoader.tsx` においてR3F側の自動センタリングが行われていないため、Blender側のローカル原点の影響が増幅されていることを断定。
+   - 解決策（Blender側対応案 or コード側 `<Center>` 対応案）を `Docs/02_Technical/Troubleshooting/08_Model_Origin_Offset.md` としてドキュメント化。
 
 ## 次回作業への引き継ぎ (Handoff Note)
 
-Phase 5.2 の全タスク（UI修正、マニフェスト拡張、ドキュメント整備）が完了しました。
-学校環境からはデプロイできないため、**自宅での手動デプロイ** が次のステップです。
+Vercelでの手動デプロイおよびRadio稼働の検証が完了しました。
+直近の課題として持ち上がった、缶コーヒー（Item-003）等の「モデルの原点ズレ問題」の解決が次のステップです。
 
-### Critical Action (At Home)
+### Critical Action (Next Session)
 
-1. **Manual Deploy:**
-   - 作成した `Deployment_Guide_Vercel.md` に従い、Vercelへデプロイを行う。
-2. **Live Verification:**
-   - スマホ実機で `SmartLoader` の挙動（MB表示）と、`Dynamic Numbering` の表示を確認する。
+1. **Fix Origin Offset (Item-003 Can Coffee):**
+   - 作成した `Docs/02_Technical/Troubleshooting/08_Model_Origin_Offset.md` の記述に従い、アプローチ（Blender側での修正、または `<Center>` コンポーネント実装）を選択・実行する。
+2. **Integration of Other Items:**
+   - ピアノ(Item-002)などの他モデルも読み込んで座標やサイズ感の検証を行う。
 
 ### Status
 
 - **CI/CD:** Green (Built Successfully).
-- **Vercel:** **Needs Update** (Manual Deploy Required).
-- **Codebase:** **Stable & Polished**.
-- **Assets:** **Ready for Integration** (Radio Done / Draco Optimized).
+- **Vercel:** **Stable** (Case-Sensitivity fixed).
+- **Codebase:** **Ready** for offset component implementation if Approach B is chosen.
+- **Assets:** **Needs Fix** on Origin points for specific small objects (Can Coffee, etc.).
 - **Performance:** **Optimized** (Draco & Manifest).
 
 ---
