@@ -107,15 +107,15 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
 
     {
     id: "Item-006",
-    active: false, // まだモデルがないので false
+    active: true,
     name: "Camera",
     path: "/models/06_Camera.glb",
     techSpecs: {
-      fileSize: "TBD",
+      fileSize: "1.367MB",
     },
-    rotationSpeed: [0,0,0],
-    scale: [1,1,1],
-    position: [0,0,0],
+    rotationSpeed: [0,-0.5,0],
+    scale: [25,25,25],
+    position: [0,-1,0],
     quote: "今まで撮ってきた景色を見ながら最後を迎えたいから",
     description: "いつかの景色を、いつまでも",
     contributor: "クエリ伍長",
@@ -129,7 +129,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     techSpecs: {
       fileSize: "TBD",
     },
-    rotationSpeed: [0,0,0],
+    rotationSpeed: [0,-0.5,0],
     scale: [1,1,1],
     position: [0,0,0],
     quote: "一人でも暇つぶしできるから",
@@ -145,7 +145,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     techSpecs: {
       fileSize: "TBD",
     },
-    rotationSpeed: [0,0,0],
+    rotationSpeed: [0,-0.5,0],
     scale: [1,1,1],
     position: [0,0,0],
     quote: "最後を迎えるなら明るいほうがいいから",
@@ -161,7 +161,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     techSpecs: {
       fileSize: "TBD",
     },
-    rotationSpeed: [0,0,0],
+    rotationSpeed: [0,-0.5,0],
     scale: [1,1,1],
     position: [0,0,0],
     quote: "",
