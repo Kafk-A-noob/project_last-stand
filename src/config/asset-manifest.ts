@@ -14,7 +14,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     path: "/models/00_React_Logo.glb", // Placeholder: React Logo
     // 初期値として記述
     techSpecs: {
-      fileSize: "0.0752 MB", // 容量は手動で書く
+      fileSize: "75.2 KB", // 容量は手動で書く
     },
     rotationSpeed: [2, 3, 1], // 個別の回転速度定義
     quote: "仮置き",
@@ -27,7 +27,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     name: "Radio",
     path: "/models/01_Radio.glb", // Placeholder: 
     techSpecs: {
-      fileSize: "0.983 MB", // 容量
+      fileSize: "983 KB", // 容量
     },
     rotationSpeed: [0,-0.5,0],
     scale: [5,5,5],
@@ -60,7 +60,7 @@ export const ASSET_MANIFEST: ArchiveItem[] = [
     name: "Can Coffee",
     path: "/models/03_Can_Coffee.glb",
     techSpecs: {
-      fileSize: "0.214MB",
+      fileSize: "214KB",
     },
     rotationSpeed: [0,-0.5,0],
     scale: [20,20,20],
